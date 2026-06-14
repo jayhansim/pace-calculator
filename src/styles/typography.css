@@ -1,0 +1,53 @@
+/* Korean decorative font — Noto Serif KR as accessible fallback */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap');
+
+body {
+  font-family: 'Geist Variable', 'Geist', system-ui, sans-serif;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-primary);
+  font-size: var(--fs-body-md);
+}
+
+.font-korean {
+  font-family: 'Noto Serif KR', serif;
+}
+
+.text-hero {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+}
+
+.text-body-lg {
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.text-body-md {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-medium);
+}
+
+.text-body-sm {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.text-caption {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.tabular-nums {
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}

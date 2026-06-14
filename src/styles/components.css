@@ -1,0 +1,350 @@
+/* ── Button ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-button);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  transition: background 120ms ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn:hover {
+  background: var(--color-gray-100);
+}
+
+.btn--lg {
+  height: 48px;
+  padding: var(--space-16) var(--space-20);
+  font-size: 16px;
+}
+
+.btn--md {
+  height: 42px;
+  padding: var(--space-12) var(--space-20);
+  font-size: var(--fs-body-md);
+}
+
+/* ── Icon Button ────────────────────────────────────── */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 30px;
+  padding: var(--space-8);
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-button);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: background 120ms ease;
+}
+
+.icon-btn:hover {
+  background: var(--color-gray-100);
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* ── Segmented Control ──────────────────────────────── */
+.segmented {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-gray-50);
+  border-radius: var(--radius-pill);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-button);
+  gap: var(--space-4);
+}
+
+.segmented__option {
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-inner);
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-unselected);
+  transition: background 120ms ease, color 120ms ease;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.segmented__option:hover:not(.segmented__option--selected) {
+  color: var(--color-text-primary);
+}
+
+.segmented__option--selected {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-button);
+}
+
+/* ── Table ──────────────────────────────────────────── */
+.table-wrap {
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-table);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* THead */
+.table thead tr {
+  background: var(--color-gray-25);
+  height: 44px;
+}
+
+.table thead th {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  text-align: left;
+  padding: 0 var(--space-16);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.table thead th:not(:first-child) {
+  text-align: right;
+}
+
+/* TBody */
+.table tbody tr {
+  height: 44px;
+  border-bottom: 1px solid var(--color-gray-100);
+  transition: background 80ms ease;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:nth-child(even) {
+  background: var(--color-gray-25);
+}
+
+.table tbody tr.row--highlight {
+  background: var(--color-green-100);
+}
+
+.table td {
+  padding: 0 var(--space-16);
+  vertical-align: middle;
+}
+
+.table td.col-distance {
+  width: 72px;
+}
+
+.table td.col-split {
+  width: 64px;
+  text-align: right;
+}
+
+.table td.col-lap {
+  text-align: right;
+}
+
+.td-primary {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+}
+
+.td-secondary {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* Mobile table rows */
+@media (max-width: 767px) {
+  .table tbody tr {
+    height: 64px;
+  }
+
+  .table td.col-distance {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .td-distance-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+}
+
+/* ── Table head with embedded segmented control ─────── */
+.thead-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 var(--space-16);
+  background: var(--color-gray-25);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.thead-row__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.thead-row__labels {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.thead-row__labels span {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  min-width: 64px;
+  text-align: right;
+}
+
+/* Compact segmented for table header */
+.segmented--compact {
+  padding: 4px;
+  gap: 2px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.segmented--compact .segmented__option {
+  padding: 4px 10px;
+  font-size: var(--fs-caption);
+}
+
+/* ── Divider ────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--color-gray-100);
+  width: 100%;
+}
+
+/* ── Overlay / Modal ────────────────────────────────── */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.overlay-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .overlay-backdrop {
+    align-items: center;
+  }
+}
+
+.overlay {
+  background: var(--color-white);
+  border-radius: var(--radius-modal) var(--radius-modal) 0 0;
+  padding: var(--space-24) var(--space-24) var(--space-40);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  transform: translateY(20px);
+  transition: transform 200ms ease;
+}
+
+.overlay-backdrop.is-open .overlay {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    border-radius: var(--radius-modal);
+    max-width: 420px;
+  }
+}
+
+.overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay__title {
+  font-size: 16px;
+  font-weight: var(--fw-semibold);
+}
+
+.overlay__close-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color 120ms ease;
+}
+
+.overlay__close-icon:hover {
+  color: var(--color-text-primary);
+}
+
+.overlay__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+
+.overlay__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.overlay__section-label {
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+}
+
+.overlay__text {
+  font-size: 16px;
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.overlay__text ul {
+  list-style: disc;
+  padding-left: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}

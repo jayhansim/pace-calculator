@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pace Calculator</title>
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <p class="hero__text font-korean">Pace calculator</p>
+    </div>
+
+    <div class="content">
+
+      <!-- Distance selector -->
+      <div class="section distance-selector">
+        <div id="distance-segmented" class="segmented">
+          <div class="segmented__option" data-value="5k">5K</div>
+          <div class="segmented__option" data-value="10k">10K</div>
+          <div class="segmented__option" data-value="half">Half</div>
+          <div class="segmented__option" data-value="30k">30K</div>
+          <div class="segmented__option segmented__option--selected" data-value="full">Full</div>
+        </div>
+      </div>
+
+      <!-- Pace display -->
+      <div class="section pace-section">
+        <div class="pace-display">
+          <button id="pace-minus" class="icon-btn" aria-label="Decrease pace">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <div class="pace-inputs">
+            <input
+              id="pace-min"
+              class="pace-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="2"
+              value="5"
+              aria-label="Minutes"
+            />
+            <span class="pace-colon">:</span>
+            <input
+              id="pace-sec"
+              class="pace-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="2"
+              value="30"
+              aria-label="Seconds"
+            />
+            <span class="pace-unit">/km</span>
+          </div>
+
+          <button id="pace-plus" class="icon-btn" aria-label="Increase pace">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Stats row -->
+      <div class="section">
+        <div class="stats-row">
+          <div class="stat-item">
+            <span id="stat-time" class="stat-item__value tabular-nums">—</span>
+            <span class="stat-item__label">Total time</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-speed" class="stat-item__value tabular-nums">—</span>
+            <span class="stat-item__label">Speed</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-cadence" class="stat-item__value tabular-nums">—</span>
+            <span class="stat-item__label">Cadence</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-stride" class="stat-item__value tabular-nums">—</span>
+            <span class="stat-item__label">Stride length</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Split controls + table -->
+      <div class="split-section">
+        <div class="split-controls">
+          <div id="interval-segmented" class="segmented">
+            <div class="segmented__option segmented__option--selected" data-value="1k">1K</div>
+            <div class="segmented__option" data-value="5k">5K</div>
+          </div>
+          <div id="split-type-segmented" class="segmented">
+            <div class="segmented__option" data-value="neg">Negative</div>
+            <div class="segmented__option segmented__option--selected" data-value="even">Even</div>
+            <div class="segmented__option" data-value="pos">Positive</div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <!-- Custom thead with embedded controls -->
+          <div class="thead-row">
+            <span class="text-body-md">Distance</span>
+            <div class="thead-row__labels">
+              <span>Lap</span>
+              <span>Split</span>
+            </div>
+          </div>
+          <table class="table">
+            <tbody id="split-tbody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Info button -->
+      <div class="info-btn-wrap">
+        <button id="info-btn" class="btn btn--md">About this calculator</button>
+      </div>
+
+    </div><!-- /.content -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer__text font-korean">May the pace<br>be with you.</p>
+      <p class="footer__tagline">Pace Calculator — Built for runners, by runners.</p>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <!-- Overlay / Modal -->
+  <div id="overlay-backdrop" class="overlay-backdrop">
+    <div class="overlay">
+      <div class="overlay__header">
+        <span class="overlay__title">About this calculator</span>
+        <svg class="overlay__close-icon" data-close-overlay viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="overlay__body">
+        <div class="overlay__section">
+          <span class="overlay__section-label">How it works</span>
+          <p class="overlay__text">
+            Enter your target pace per kilometre using the +/− buttons or by typing directly into the pace fields. The calculator will show you the total finish time and split breakdowns for your chosen race distance.
+          </p>
+        </div>
+        <div class="overlay__section">
+          <span class="overlay__section-label">Split types</span>
+          <p class="overlay__text">
+            <ul>
+              <li><strong>Even</strong> — identical pace for every km</li>
+              <li><strong>Negative</strong> — start ~2% slower, finish ~2% faster</li>
+              <li><strong>Positive</strong> — start ~2% faster, finish ~2% slower</li>
+            </ul>
+          </p>
+        </div>
+        <div class="overlay__section">
+          <span class="overlay__section-label">Estimates</span>
+          <p class="overlay__text">
+            Cadence and stride length are modelled estimates based on your pace. Actual values vary by runner.
+          </p>
+        </div>
+      </div>
+      <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>
+    </div>
+  </div>
+
+</body>
+</html>

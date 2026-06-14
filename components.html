@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components — Pace Calculator</title>
+  <script type="module" src="/src/components-preview.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Nav -->
+  <nav class="preview-nav">
+    <span class="preview-nav__title">Components</span>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#segmented">Segmented Controls</a>
+    <a href="#table">Table</a>
+    <a href="#overlay">Overlay</a>
+    <a href="/" style="margin-left:auto; color: var(--color-accent)">← Calculator</a>
+  </nav>
+
+  <main class="preview-main">
+
+    <!-- 1. Colors -->
+    <section id="colors" class="preview-section">
+      <h2 class="preview-section__title">Colors</h2>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Grays</p>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch__color" style="background:#ffffff;"></div><span class="swatch__name">White</span><span class="swatch__hex">#ffffff</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#f9f9f9;"></div><span class="swatch__name">Gray/25</span><span class="swatch__hex">#f9f9f9</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#f5f5f5;"></div><span class="swatch__name">Gray/50</span><span class="swatch__hex">#f5f5f5</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#eeeeee;"></div><span class="swatch__name">Gray/100</span><span class="swatch__hex">#eeeeee</span></div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Text</p>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch__color" style="background:#000000;"></div><span class="swatch__name">Primary</span><span class="swatch__hex">#000000</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#888888;"></div><span class="swatch__name">Secondary</span><span class="swatch__hex">#888888</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#999999;"></div><span class="swatch__name">Unselected</span><span class="swatch__hex">#999999</span></div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Accent</p>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch__color" style="background:#edf7e8;"></div><span class="swatch__name">Green/100</span><span class="swatch__hex">#edf7e8</span></div>
+          <div class="swatch"><div class="swatch__color" style="background:#2e9aa5;"></div><span class="swatch__name">Teal</span><span class="swatch__hex">#2e9aa5</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Typography -->
+    <section id="typography" class="preview-section">
+      <h2 class="preview-section__title">Typography</h2>
+
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Hero / Pace</p>
+          <p class="type-specimen__spec">120px · SemiBold · −0.02em</p>
+        </div>
+        <span style="font-size:60px;font-weight:600;line-height:1;letter-spacing:-0.02em;">5:30</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">H3 / Stat value</p>
+          <p class="type-specimen__spec">28px · SemiBold</p>
+        </div>
+        <span class="text-h3">3:52:15</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Body Large</p>
+          <p class="type-specimen__spec">18px · SemiBold</p>
+        </div>
+        <span class="text-body-lg">Split table</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Body Medium</p>
+          <p class="type-specimen__spec">14px · Medium</p>
+        </div>
+        <span class="text-body-md">Distance · Lap · Split</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Body Small</p>
+          <p class="type-specimen__spec">14px · Regular · Gray</p>
+        </div>
+        <span class="text-body-sm">5:30/km pace per kilometre</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Caption</p>
+          <p class="type-specimen__spec">12px · Regular · Gray</p>
+        </div>
+        <span class="text-caption">Total time · Speed · Cadence</span>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__meta">
+          <p class="type-specimen__label">Korean (decorative)</p>
+          <p class="type-specimen__spec">Noto Serif KR · 400</p>
+        </div>
+        <span class="font-korean" style="font-size:24px;">Pace calculator</span>
+      </div>
+    </section>
+
+    <!-- 3. Buttons -->
+    <section id="buttons" class="preview-section">
+      <h2 class="preview-section__title">Buttons</h2>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Button — Large</p>
+        <div class="preview-row">
+          <div>
+            <p class="preview-label">Default</p>
+            <button class="btn btn--lg">About this calculator</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Button — Medium</p>
+        <div class="preview-row">
+          <div>
+            <p class="preview-label">Default</p>
+            <button class="btn btn--md">Close</button>
+          </div>
+          <div>
+            <p class="preview-label">Hover (simulated)</p>
+            <button class="btn btn--md" style="background:var(--color-gray-100);">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Icon Button</p>
+        <div class="preview-row">
+          <div>
+            <p class="preview-label">Minus · Default</p>
+            <button class="icon-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div>
+            <p class="preview-label">Plus · Default</p>
+            <button class="icon-btn">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div>
+            <p class="preview-label">Minus · Hover</p>
+            <button class="icon-btn" style="background:var(--color-gray-100);">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div>
+            <p class="preview-label">Plus · Hover</p>
+            <button class="icon-btn" style="background:var(--color-gray-100);">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Segmented Controls -->
+    <section id="segmented" class="preview-section">
+      <h2 class="preview-section__title">Segmented Controls</h2>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Race Distance</p>
+        <div class="segmented">
+          <div class="segmented__option" data-value="5k">5K</div>
+          <div class="segmented__option" data-value="10k">10K</div>
+          <div class="segmented__option segmented__option--selected" data-value="half">Half</div>
+          <div class="segmented__option" data-value="30k">30K</div>
+          <div class="segmented__option" data-value="full">Full</div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Split Interval</p>
+        <div class="segmented">
+          <div class="segmented__option segmented__option--selected" data-value="1k">1K</div>
+          <div class="segmented__option" data-value="5k">5K</div>
+        </div>
+      </div>
+
+      <div class="preview-group">
+        <p class="preview-group__name">Split Type</p>
+        <div class="segmented">
+          <div class="segmented__option" data-value="neg">Negative</div>
+          <div class="segmented__option segmented__option--selected" data-value="even">Even</div>
+          <div class="segmented__option" data-value="pos">Positive</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Table -->
+    <section id="table" class="preview-section">
+      <h2 class="preview-section__title">Table</h2>
+      <div class="table-wrap">
+        <div class="thead-row">
+          <span class="text-body-md">Distance</span>
+          <div class="thead-row__labels">
+            <span>Lap</span>
+            <span>Split</span>
+          </div>
+        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">1K</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">5:30</td>
+            </tr>
+            <tr>
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">2K</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">11:00</td>
+            </tr>
+            <tr>
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">3K</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">16:30</td>
+            </tr>
+            <tr>
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">4K</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">22:00</td>
+            </tr>
+            <tr>
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">5K</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">27:30</td>
+            </tr>
+            <tr class="row--highlight">
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">Half</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">1:55:54</td>
+            </tr>
+            <tr class="row--highlight">
+              <td class="col-distance"><div class="td-distance-cell"><span class="td-primary">Finish</span><span class="td-secondary">5:30/km</span></div></td>
+              <td class="col-lap td-primary">5:30</td>
+              <td class="col-split td-primary">3:51:48</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="preview-note" style="margin-top:var(--space-8)">Alternating rows: white / gray-25. Highlighted rows: green-100.</p>
+    </section>
+
+    <!-- 6. Overlay -->
+    <section id="overlay" class="preview-section">
+      <h2 class="preview-section__title">Overlay / Modal</h2>
+      <p class="preview-note" style="margin-bottom:var(--space-16)">Click the button to open the overlay. Click backdrop or Close to dismiss.</p>
+      <button id="overlay-open-btn" class="btn btn--md">Open overlay</button>
+    </section>
+
+  </main>
+
+  <!-- Overlay -->
+  <div id="overlay-backdrop" class="overlay-backdrop">
+    <div class="overlay">
+      <div class="overlay__header">
+        <span class="overlay__title">Site info</span>
+        <svg class="overlay__close-icon" data-close-overlay viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="overlay__body">
+        <div class="overlay__section">
+          <span class="overlay__section-label">Description</span>
+          <p class="overlay__text">This is the component preview page for the Pace Calculator design system. All colors, typography, and interactive components are demonstrated here.</p>
+        </div>
+        <div class="overlay__section">
+          <span class="overlay__section-label">Components</span>
+          <p class="overlay__text">
+            <ul>
+              <li>Button (Large / Medium)</li>
+              <li>Icon Button (Plus / Minus)</li>
+              <li>Segmented Control</li>
+              <li>Table with highlight rows</li>
+              <li>Overlay / Modal</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>
+    </div>
+  </div>
+
+</body>
+</html>
