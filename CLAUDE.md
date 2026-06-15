@@ -37,11 +37,13 @@ User event → mutate state → updateUI() → DOM writes
 | `src/state.js` | State object + `updateUI()` dispatcher. Imports from `calculator.js`. |
 | `src/main.js` | Wires DOM event listeners → state mutations → `updateUI()`. Also imports all CSS. |
 | `src/styles/tokens.css` | Single source of truth for all design tokens (colors, spacing, radii, type scale). |
-| `src/styles/components.css` | `.btn`, `.icon-btn`, `.segmented`, `.table-wrap`, `.overlay-backdrop` — all reusable component styles. |
+| `src/styles/components.css` | `.btn`, `.icon-btn`, `.segmented`, `.table-wrap`, `.overlay-backdrop`, `.text-link` — all reusable component styles. |
 
 ### Design tokens
 
 All CSS custom properties are declared in `tokens.css` and consumed everywhere else. Never hard-code colors or spacing — always use the `--color-*`, `--space-*`, `--radius-*`, `--fs-*`, `--fw-*` variables.
+
+`font-variant-numeric: tabular-nums` is intentionally scoped to only two places: `.pace-input` (landing.css) and `.table` (components.css). Do not add it globally or to other elements.
 
 ### Fonts
 
@@ -50,4 +52,4 @@ All CSS custom properties are declared in `tokens.css` and consumed everywhere e
 
 ### Responsive strategy
 
-Mobile-first. One breakpoint at `768px` in `layout.css` and `landing.css`. Key differences above 768px: horizontal padding increases to `var(--space-96)` (96px), table rows shrink from 64px to 44px.
+Mobile-first. One breakpoint at `768px` in `layout.css` and `landing.css`. Key differences above 768px: horizontal padding increases to `var(--space-96)` (96px), table rows shrink from 64px to 44px, stats row expands from 2-column to 4-column grid.
