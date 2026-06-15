@@ -97,14 +97,6 @@
   user-select: none;
 }
 
-.pace-unit {
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-regular);
-  color: var(--color-text-secondary);
-  align-self: flex-end;
-  padding-bottom: 8px;
-  margin-left: var(--space-8);
-}
 
 /* ── Stats row ──────────────────────────────────────── */
 .stats-row {
