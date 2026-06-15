@@ -30,9 +30,9 @@ export function updateUI() {
   // Stats
   const totalSec = calcTotalTime(state.paceSeconds, distKm)
   setText('stat-time', formatTime(totalSec))
-  setText('stat-speed', calcSpeed(state.paceSeconds) + ' km/h')
-  setText('stat-cadence', calcCadence(state.paceSeconds) + ' spm')
-  setText('stat-stride', calcStrideLength(state.paceSeconds) + ' m')
+  setText('stat-speed', calcSpeed(state.paceSeconds))
+  setText('stat-cadence', calcCadence(state.paceSeconds))
+  setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds) * 100))
 
   // Split table body
   const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType)

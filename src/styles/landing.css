@@ -94,15 +94,14 @@
 /* ── Stats row ──────────────────────────────────────── */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-16);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-40);
   padding: var(--space-40) 0;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   .stats-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-12);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -116,13 +115,11 @@
   font-size: var(--fs-h3);
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
-  font-feature-settings: "lnum" 1, "tnum" 1;
-  font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
 
 .stat-item__label {
-  font-size: var(--fs-caption);
+  font-size: 14px;
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
 }
