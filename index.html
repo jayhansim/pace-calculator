@@ -98,11 +98,8 @@
 
       <!-- Split controls + table -->
       <div class="split">
+        <p class="split__title">Splits</p>
         <div class="split-controls">
-          <div id="interval-segmented" class="segmented">
-            <div class="segmented__option segmented__option--selected" data-value="1k">1K</div>
-            <div class="segmented__option" data-value="5k">5K</div>
-          </div>
           <div id="split-type-segmented" class="segmented">
             <div class="segmented__option" data-value="neg">Negative</div>
             <div class="segmented__option segmented__option--selected" data-value="even">Even</div>
@@ -114,6 +111,11 @@
           <!-- Custom thead with embedded controls -->
           <div class="thead-row">
             <span class="text-body-md">Distance</span>
+            <div id="interval-segmented" class="thead-interval">
+              <div class="segmented__option segmented__option--selected" data-value="1k">1K</div>
+              <div class="thead-interval__divider"></div>
+              <div class="segmented__option" data-value="5k">5K</div>
+            </div>
             <div class="thead-row__labels">
               <span>Lap</span>
               <span>Split</span>

@@ -253,6 +253,33 @@
   font-size: var(--fs-caption);
 }
 
+/* ── Thead interval toggle (1K / 5K) ───────────────── */
+.thead-interval {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: var(--space-12);
+}
+
+.thead-interval .segmented__option {
+  padding: 0 var(--space-8);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-unselected);
+  border-radius: 0;
+  background: none;
+}
+
+.thead-interval .segmented__option--selected {
+  color: var(--color-text-primary);
+  background: none;
+}
+
+.thead-interval__divider {
+  width: 1px;
+  height: 17px;
+  background: var(--color-gray-100);
+}
+
 /* ── Text link ──────────────────────────────────────── */
 .text-link {
   background: none;
