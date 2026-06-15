@@ -3,7 +3,7 @@
   height: 140px;
   background-image: url('../images/header-bg.jpg');
   background-size: cover;
-  background-position: top;
+  background-position: bottom;
   display: flex;
   align-items: center;
   justify-content: center;
