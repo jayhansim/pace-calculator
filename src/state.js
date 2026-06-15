@@ -40,15 +40,15 @@ export function updateUI() {
   if (!tbody) return
 
   tbody.innerHTML = splits.map(row => `
-    <tr class="${row.isHighlight ? 'row--highlight' : ''}">
+    <tr class="${row.isHighlight ? 'row--highlight' : (state.splitInterval === '1k' && row.is5kMark ? 'row--5k-mark' : '')}">
       <td class="col-distance">
         <div class="td-distance-cell">
           <span class="td-primary">${row.distLabel}</span>
-          <span class="td-secondary">${formatPace(row.lapPace).min}:${formatPace(row.lapPace).sec}/km</span>
+          <span class="td-secondary">${formatPace(row.lapPace).min}:${formatPace(row.lapPace).sec}min/km</span>
         </div>
       </td>
-      <td class="col-lap td-primary">${formatTime(row.lapTime)}</td>
-      <td class="col-split td-primary">${formatTime(row.cumTime)}</td>
+      <td class="col-lap">${row.chunkTime !== null ? formatTime(row.chunkTime) : ''}</td>
+      <td class="col-split">${formatTime(row.cumTime)}</td>
     </tr>
   `).join('')
 }

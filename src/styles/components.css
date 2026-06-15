@@ -118,7 +118,6 @@
 /* THead */
 .table thead tr {
   background: var(--color-gray-25);
-  height: 44px;
 }
 
 .table thead th {
@@ -136,7 +135,6 @@
 
 /* TBody */
 .table tbody tr {
-  height: 44px;
   border-bottom: 1px solid var(--color-gray-100);
   transition: background 80ms ease;
 }
@@ -145,7 +143,7 @@
   border-bottom: none;
 }
 
-.table tbody tr:nth-child(even) {
+.table tbody tr.row--5k-mark {
   background: var(--color-gray-25);
 }
 
@@ -154,7 +152,7 @@
 }
 
 .table td {
-  padding: 0 var(--space-16);
+  padding: var(--space-12) var(--space-16);
   vertical-align: middle;
 }
 
@@ -163,12 +161,13 @@
 }
 
 .table td.col-split {
-  width: 64px;
+  width: var(--space-96);
   text-align: right;
 }
 
 .table td.col-lap {
   text-align: right;
+  color: var(--color-text-secondary);
 }
 
 .td-primary {
@@ -186,10 +185,6 @@
 
 /* Mobile table rows */
 @media (max-width: 767px) {
-  .table tbody tr {
-    height: 64px;
-  }
-
   .table td.col-distance {
     padding-top: var(--space-12);
     padding-bottom: var(--space-12);
@@ -200,6 +195,19 @@
     flex-direction: column;
     justify-content: center;
     gap: 2px;
+  }
+}
+
+@media (min-width: 768px) {
+  .td-distance-cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .td-primary {
+    width: 72px;
   }
 }
 
@@ -222,14 +230,13 @@
 
 .thead-row__labels {
   display: flex;
-  gap: var(--space-16);
 }
 
 .thead-row__labels span {
   font-size: var(--fs-body-md);
   font-weight: var(--fw-medium);
   color: var(--color-text-primary);
-  min-width: 64px;
+  min-width: var(--space-96);
   text-align: right;
 }
 

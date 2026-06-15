@@ -45,6 +45,7 @@ export function generateSplits(paceSec, distKm, intervalKm, splitType) {
   const numSegments = Math.ceil(distKm / intervalKm)
   const splits = []
   let cumTime = 0
+  let lastChunkCumTime = 0
   const halfDist = 21.0975
 
   for (let i = 0; i < numSegments; i++) {
@@ -59,10 +60,32 @@ export function generateSplits(paceSec, distKm, intervalKm, splitType) {
 
     const lapPace = paceSec * multiplier
     const lapTime = lapPace * segDistance
+    const cumTimeBefore = cumTime
     cumTime += lapTime
 
     const isFinish = Math.abs(segEnd - distKm) < 0.001
-    const isHalf = Math.abs(segEnd - halfDist) < intervalKm * 0.5 && distKm > halfDist && Math.abs(segEnd - halfDist) < 0.5
+    const is5kMark = !isFinish && segEnd % 5 < 0.001
+
+    // Insert Half marker row when this segment crosses the half marathon mark
+    if (distKm > halfDist && segStart < halfDist && segEnd > halfDist) {
+      const halfLapTime = lapPace * (halfDist - segStart)
+      splits.push({
+        distLabel: 'Half',
+        segEnd: halfDist,
+        lapTime: halfLapTime,
+        cumTime: cumTimeBefore + halfLapTime,
+        lapPace,
+        isHighlight: true,
+        is5kMark: false,
+        chunkTime: null,
+      })
+    }
+
+    let chunkTime = null
+    if (is5kMark || isFinish) {
+      chunkTime = cumTime - lastChunkCumTime
+      lastChunkCumTime = cumTime
+    }
 
     let distLabel
     if (isFinish) {
@@ -79,7 +102,9 @@ export function generateSplits(paceSec, distKm, intervalKm, splitType) {
       lapTime,
       cumTime,
       lapPace,
-      isHighlight: isFinish || isHalf,
+      isHighlight: isFinish,
+      is5kMark,
+      chunkTime,
     })
   }
   return splits
