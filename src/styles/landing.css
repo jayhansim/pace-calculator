@@ -5,6 +5,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -23,6 +24,7 @@
   color: var(--color-green-100);
   font-size: 28px;
   line-height: 1.2;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -32,9 +34,13 @@
   }
 }
 
+/* ── Calculator ─────────────────────────────────────── */
+.calculator {
+  text-align: center;
+}
+
 /* ── Distance selector ──────────────────────────────── */
 .distance-selector {
-  padding: var(--space-40) 0 0;
 }
 
 /* ── Pace display ───────────────────────────────────── */
@@ -91,14 +97,6 @@
   user-select: none;
 }
 
-.pace-unit {
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-regular);
-  color: var(--color-text-secondary);
-  align-self: flex-end;
-  padding-bottom: 8px;
-  margin-left: var(--space-8);
-}
 
 /* ── Stats row ──────────────────────────────────────── */
 .stats-row {
@@ -137,8 +135,7 @@
 }
 
 /* ── Split section ──────────────────────────────────── */
-.split-section {
-  padding-bottom: var(--space-40);
+.split {
 }
 
 .split-controls {
@@ -159,7 +156,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
   padding: var(--space-40) var(--space-24);
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -203,6 +202,5 @@
 /* ── Info button (open overlay) ──────────────────────── */
 .info-btn-wrap {
   display: flex;
-  justify-content: flex-end;
-  padding: var(--space-16) 0 0;
+  justify-content: center;
 }

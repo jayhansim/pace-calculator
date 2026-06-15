@@ -4,7 +4,6 @@ body {
 }
 
 .page {
-  max-width: var(--max-width-page);
   margin: 0 auto;
 }
 
@@ -16,19 +15,10 @@ body {
   padding: 0 var(--space-24);
 }
 
-@media (min-width: 768px) {
-  .content {
-    padding: 0 var(--space-96);
-  }
-}
 
-/* Sections stack with 40px gap */
-.section {
-  padding: var(--space-40) 0;
-}
-
-.section + .section {
-  padding-top: 0;
+.content > * {
+  margin-top: var(--space-40);
+  margin-bottom: var(--space-40);
 }
 
 /* Full-bleed within page (no content padding) */

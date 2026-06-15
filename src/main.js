@@ -1,10 +1,3 @@
-import '@fontsource-variable/geist'
-import './styles/tokens.css'
-import './styles/reset.css'
-import './styles/typography.css'
-import './styles/components.css'
-import './styles/layout.css'
-import './styles/landing.css'
 
 import { state, updateUI } from './state.js'
 
@@ -62,9 +55,18 @@ function initOverlay() {
   const openBtn = document.getElementById('info-btn')
   const closeBtns = document.querySelectorAll('[data-close-overlay]')
 
-  openBtn?.addEventListener('click', () => backdrop?.classList.add('is-open'))
-  closeBtns.forEach(btn => btn.addEventListener('click', () => backdrop?.classList.remove('is-open')))
-  backdrop?.addEventListener('click', e => { if (e.target === backdrop) backdrop.classList.remove('is-open') })
+  function openOverlay() {
+    backdrop.style.display = 'flex'
+    requestAnimationFrame(() => backdrop.classList.add('is-open'))
+  }
+  function closeOverlay() {
+    backdrop.classList.remove('is-open')
+    backdrop.addEventListener('transitionend', () => { backdrop.style.display = 'none' }, { once: true })
+  }
+
+  openBtn?.addEventListener('click', openOverlay)
+  closeBtns.forEach(btn => btn.addEventListener('click', closeOverlay))
+  backdrop?.addEventListener('click', e => { if (e.target === backdrop) closeOverlay() })
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -31,8 +31,7 @@
   --space-96: 96px;
 
   /* Layout */
-  --max-width-page:    1440px;
-  --max-width-content: 680px;
+  --max-width-content: 720px;
 
   /* Typography */
   --fs-hero:     120px;
