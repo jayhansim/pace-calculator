@@ -1,5 +1,8 @@
-/* Korean decorative font — Noto Serif KR as accessible fallback */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap');
+@font-face {
+  font-family: 'Cafe24PROUP';
+  src: url('../fonts/Cafe24PROUP.woff2') format('woff2');
+  font-display: swap;
+}
 
 body {
   font-family: 'Geist Variable', 'Geist', system-ui, sans-serif;
@@ -9,7 +12,7 @@ body {
 }
 
 .font-korean {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24PROUP', serif;
 }
 
 .text-hero {
