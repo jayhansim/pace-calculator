@@ -41,53 +41,87 @@
   padding: var(--space-40) 0;
 }
 
-.pace-display {
+.pace-heading {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.pace-heading__label {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+}
+
+.pace-heading__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.pace-heading__caret svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.pace-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   gap: var(--space-16);
 }
 
-.pace-inputs {
+.pace-counter {
   display: flex;
-  align-items: baseline;
-  gap: 2px;
-  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
 }
 
-.pace-input {
+.pace-counter__display {
+  display: flex;
+  align-items: center;
+  line-height: 1;
   font-size: var(--fs-hero);
   font-weight: var(--fw-semibold);
-  line-height: 1;
-  letter-spacing: -0.02em;
   color: var(--color-text-primary);
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 2ch;
-  text-align: center;
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: tabular-nums;
-  font-family: inherit;
-  -moz-appearance: textfield;
-}
-
-.pace-input::-webkit-outer-spin-button,
-.pace-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-.pace-input:focus {
-  outline: 2px solid var(--color-accent);
-  border-radius: 4px;
-}
-
-.pace-colon {
-  font-size: var(--fs-hero);
-  font-weight: var(--fw-semibold);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--color-text-primary);
   user-select: none;
+}
+
+.pace-counter__controls {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.pace-separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 120px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.pace-separator__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
 }
 
 

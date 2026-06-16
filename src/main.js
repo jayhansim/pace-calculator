@@ -14,40 +14,19 @@ function initSegmented(containerId, stateKey) {
   })
 }
 
+const PACE_MIN_SECONDS = 60
+const PACE_MAX_SECONDS = 99 * 60 + 59
+
+function stepPace(deltaSeconds) {
+  state.paceSeconds = Math.max(PACE_MIN_SECONDS, Math.min(PACE_MAX_SECONDS, state.paceSeconds + deltaSeconds))
+  updateUI()
+}
+
 function initPaceInput() {
-  const paceMin = document.getElementById('pace-min')
-  const paceSec = document.getElementById('pace-sec')
-  const btnMinus = document.getElementById('pace-minus')
-  const btnPlus = document.getElementById('pace-plus')
-
-  function clampAndUpdate() {
-    let m = parseInt(paceMin.value, 10) || 0
-    let s = parseInt(paceSec.value, 10) || 0
-    if (s >= 60) { m += Math.floor(s / 60); s = s % 60 }
-    if (s < 0) { m = Math.max(0, m - 1); s = 59 }
-    m = Math.max(0, Math.min(99, m))
-    s = Math.max(0, Math.min(59, s))
-    state.paceSeconds = m * 60 + s
-    paceMin.value = String(m)
-    paceSec.value = String(s).padStart(2, '0')
-    updateUI()
-  }
-
-  paceMin?.addEventListener('blur', clampAndUpdate)
-  paceSec?.addEventListener('blur', clampAndUpdate)
-
-  paceMin?.addEventListener('keydown', e => { if (e.key === 'Enter') clampAndUpdate() })
-  paceSec?.addEventListener('keydown', e => { if (e.key === 'Enter') clampAndUpdate() })
-
-  btnMinus?.addEventListener('click', () => {
-    state.paceSeconds = Math.max(60, state.paceSeconds - 1)
-    updateUI()
-  })
-
-  btnPlus?.addEventListener('click', () => {
-    state.paceSeconds = Math.min(99 * 60 + 59, state.paceSeconds + 1)
-    updateUI()
-  })
+  document.getElementById('pace-min-minus')?.addEventListener('click', () => stepPace(-60))
+  document.getElementById('pace-min-plus')?.addEventListener('click', () => stepPace(60))
+  document.getElementById('pace-sec-minus')?.addEventListener('click', () => stepPace(-1))
+  document.getElementById('pace-sec-plus')?.addEventListener('click', () => stepPace(1))
 }
 
 function initOverlay() {

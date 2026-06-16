@@ -22,10 +22,8 @@ export function updateUI() {
 
   // Pace display
   const { min, sec } = formatPace(state.paceSeconds)
-  const paceMin = document.getElementById('pace-min')
-  const paceSec = document.getElementById('pace-sec')
-  if (paceMin && document.activeElement !== paceMin) paceMin.value = min
-  if (paceSec && document.activeElement !== paceSec) paceSec.value = sec
+  setDigits('pace-min-display', min.padStart(2, '0'))
+  setDigits('pace-sec-display', sec)
 
   // Stats
   const totalSec = calcTotalTime(state.paceSeconds, distKm)
@@ -56,4 +54,10 @@ export function updateUI() {
 function setText(id, value) {
   const el = document.getElementById(id)
   if (el) el.textContent = value
+}
+
+function setDigits(id, digits) {
+  const el = document.getElementById(id)
+  if (!el) return
+  el.innerHTML = digits.split('').map(d => `<span class="pace-digit">${d}</span>`).join('')
 }

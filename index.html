@@ -32,41 +32,52 @@
         
         <!-- Pace display -->
         <div class="pace-section">
-          <div class="pace-display">
-            <button id="pace-minus" class="icon-btn" aria-label="Decrease pace">
+          <div class="pace-heading">
+            <span class="pace-heading__label">Pace (min/km)</span>
+            <button id="pace-unit-toggle" class="pace-heading__caret" aria-label="Change pace unit">
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
+          </div>
 
-            <div class="pace-inputs">
-              <input
-                id="pace-min"
-                class="pace-input"
-                type="text"
-                inputmode="numeric"
-                maxlength="2"
-                value="5"
-                aria-label="Minutes"
-              />
-              <span class="pace-colon">:</span>
-              <input
-                id="pace-sec"
-                class="pace-input"
-                type="text"
-                inputmode="numeric"
-                maxlength="2"
-                value="30"
-                aria-label="Seconds"
-              />
-
+          <div class="pace-display">
+            <div class="pace-counter">
+              <div id="pace-min-display" class="pace-counter__display" aria-label="Minutes"></div>
+              <div class="pace-counter__controls">
+                <button id="pace-min-minus" class="icon-btn" aria-label="Decrease minutes">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+                <button id="pace-min-plus" class="icon-btn" aria-label="Increase minutes">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <button id="pace-plus" class="icon-btn" aria-label="Increase pace">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </button>
+            <div class="pace-separator" aria-hidden="true">
+              <span class="pace-separator__dot"></span>
+              <span class="pace-separator__dot"></span>
+            </div>
+
+            <div class="pace-counter">
+              <div id="pace-sec-display" class="pace-counter__display" aria-label="Seconds"></div>
+              <div class="pace-counter__controls">
+                <button id="pace-sec-minus" class="icon-btn" aria-label="Decrease seconds">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+                <button id="pace-sec-plus" class="icon-btn" aria-label="Increase seconds">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
