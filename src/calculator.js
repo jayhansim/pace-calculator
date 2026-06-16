@@ -40,7 +40,7 @@ export function calcStrideLength(paceSec, cadence) {
   return (speedMPerMin / cadence).toFixed(2)
 }
 
-export function generateSplits(paceSec, distKm, intervalKm, splitType) {
+export function generateSplits(paceSec, distKm, intervalKm, splitType, distanceKey) {
   const numSegments = Math.ceil(distKm / intervalKm)
   const splits = []
   let cumTime = 0
@@ -66,7 +66,7 @@ export function generateSplits(paceSec, distKm, intervalKm, splitType) {
     const is5kMark = !isFinish && segEnd % 5 < 0.001
 
     // Insert Half marker row when this segment crosses the half marathon mark
-    if (distKm > halfDist && segStart < halfDist && segEnd > halfDist) {
+    if (distanceKey === 'full' && segStart < halfDist && segEnd > halfDist) {
       const halfLapTime = lapPace * (halfDist - segStart)
       splits.push({
         distLabel: 'Half',

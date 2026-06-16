@@ -35,7 +35,7 @@ export function updateUI() {
   setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100))
 
   // Split table body
-  const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType)
+  const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType, state.distanceKey)
   const tbody = document.getElementById('split-tbody')
   if (!tbody) return
 
