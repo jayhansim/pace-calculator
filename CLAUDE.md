@@ -48,7 +48,7 @@ All CSS custom properties are declared in `tokens.css` and consumed everywhere e
 ### Fonts
 
 - **Geist Variable** — imported via `@fontsource-variable/geist` npm package in each JS entry file.
-- **Noto Serif KR** — loaded from Google Fonts in `typography.css`, used only for `.font-korean` decorative text (hero + footer).
+- **Cafe24PROUP** — self-hosted `.woff2` in `src/fonts/`, declared via `@font-face` in `typography.css`, used only for `.font-korean` decorative text (hero + footer).
 
 ### Responsive strategy
 
