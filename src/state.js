@@ -1,3 +1,4 @@
+import { slotText } from 'slot-text'
 import {
   DISTANCES,
   SPLIT_FIRST_LABEL,
@@ -22,22 +23,34 @@ export const state = {
 export const SPLIT_DELTA_MIN = 0
 export const SPLIT_DELTA_MAX = 30
 
+let prevPaceSeconds = null
+
 export function updateUI() {
   const distKm = DISTANCES[state.distanceKey]
   const intervalKm = state.splitInterval === '1k' ? 1 : 5
 
   // Pace display
   const { min, sec } = formatPace(state.paceSeconds)
-  setDigits('pace-min-display', min.padStart(2, '0'))
-  setDigits('pace-sec-display', sec)
+  const paceDirection = prevPaceSeconds == null ? undefined
+    : state.paceSeconds > prevPaceSeconds ? 'up'
+    : state.paceSeconds < prevPaceSeconds ? 'down'
+    : undefined
+  setSlotDigits('pace-min-display', min.padStart(2, '0'), paceDirection)
+  setSlotDigits('pace-sec-display', sec, paceDirection)
+  prevPaceSeconds = state.paceSeconds
 
   // Stats
   const totalSec = calcTotalTime(state.paceSeconds, distKm)
-  setText('stat-time', formatTime(totalSec))
-  setText('stat-speed', calcSpeed(state.paceSeconds))
+  setSlotStat('stat-time', formatTime(totalSec), totalSec)
+
+  const speed = calcSpeed(state.paceSeconds)
+  setSlotStat('stat-speed', speed, parseFloat(speed))
+
   const effectiveCadence = state.cadenceOverride ?? calcCadence(state.paceSeconds)
-  setText('stat-cadence', effectiveCadence)
-  setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100))
+  setSlotStat('stat-cadence', String(effectiveCadence), effectiveCadence)
+
+  const stride = Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100)
+  setSlotStat('stat-stride', String(stride), stride)
 
   // Split adjustment row
   const adjustRow = document.getElementById('split-adjust')
@@ -77,13 +90,42 @@ function setText(id, value) {
   if (el) el.textContent = value
 }
 
+// Animation bookkeeping for slot-machine stat rolls — not part of app state.
+const slotStats = new Map()
+
+function setSlotStat(id, text, numericValue) {
+  const el = document.getElementById(id)
+  if (!el) return
+
+  let entry = slotStats.get(id)
+  if (!entry) {
+    slotStats.set(id, { controller: slotText(el, text), prev: numericValue })
+    return
+  }
+  if (numericValue === entry.prev) return
+
+  entry.controller.set(text, { direction: numericValue > entry.prev ? 'up' : 'down' })
+  entry.prev = numericValue
+}
+
+const slotDigits = new Map()
+
+function setSlotDigits(id, text, direction) {
+  const el = document.getElementById(id)
+  if (!el) return
+
+  let entry = slotDigits.get(id)
+  if (!entry) {
+    slotDigits.set(id, { controller: slotText(el, text), prevText: text })
+    return
+  }
+  if (text === entry.prevText) return
+
+  entry.controller.set(text, direction && { direction })
+  entry.prevText = text
+}
+
 function setDisabled(id, disabled) {
   const el = document.getElementById(id)
   if (el) el.disabled = disabled
-}
-
-function setDigits(id, digits) {
-  const el = document.getElementById(id)
-  if (!el) return
-  el.innerHTML = digits.split('').map(d => `<span class="pace-digit">${d}</span>`).join('')
 }

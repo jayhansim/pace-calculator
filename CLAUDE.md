@@ -43,7 +43,7 @@ User event → mutate state → updateUI() → DOM writes
 
 All CSS custom properties are declared in `tokens.css` and consumed everywhere else. Never hard-code colors or spacing — always use the `--color-*`, `--space-*`, `--radius-*`, `--fs-*`, `--fw-*` variables.
 
-`font-variant-numeric: tabular-nums` is intentionally scoped to only four places: `.pace-input` (landing.css), `.table` (components.css), `.wheel-picker__row` (components.css), and `.split-adjust__primary` (landing.css). Do not add it globally or to other elements.
+`font-variant-numeric: tabular-nums` is intentionally scoped to only five places: `.pace-input` (landing.css), `.table` (components.css), `.wheel-picker__row` (components.css), `.split-adjust__primary` (landing.css), and `.stat-item__value` (landing.css, keeps digit columns stable during the slot-text roll animation). Do not add it globally or to other elements.
 
 ### Fonts
 

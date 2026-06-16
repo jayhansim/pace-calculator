@@ -99,7 +99,7 @@
   align-items: center;
   justify-content: center;
   width: 14px;
-  height: 96px;
+  height: 124px;
   gap: 12px;
   flex-shrink: 0;
 }
@@ -107,7 +107,7 @@
 @media (min-width:768px) {
   .pace-separator {
     width: 16px;
-    height: 120px;
+    height: 156px;
     gap: 16px;
   }
 }
@@ -145,6 +145,8 @@
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
 }
 
 .stat-item__label {

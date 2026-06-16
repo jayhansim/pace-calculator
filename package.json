@@ -12,6 +12,7 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
-    "@fontsource-variable/geist": "^5.0.0"
+    "@fontsource-variable/geist": "^5.0.0",
+    "slot-text": "^0.3.1"
   }
 }
