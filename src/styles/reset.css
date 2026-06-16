@@ -7,12 +7,14 @@
 html {
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
+  touch-action: manipulation;
 }
 
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
 }
 
 img, picture, video, canvas, svg {
