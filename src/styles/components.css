@@ -450,7 +450,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-8);
+  gap: var(--space-24);
 }
 
 .wheel-picker-row--labels {
@@ -463,14 +463,14 @@
 }
 
 .wheel-picker__arrow {
-  width: 16px;
-  height: 16px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   color: var(--color-text-primary);
 }
 
 .wheel-picker__arrow-spacer {
-  width: 16px;
+  width: 32px;
   flex-shrink: 0;
 }
 
