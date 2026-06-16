@@ -68,6 +68,7 @@
 
 /* ── Caret Button ───────────────────────────────────── */
 .caret-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -78,6 +79,16 @@
   background: none;
   color: var(--color-text-secondary);
   cursor: pointer;
+}
+
+.caret-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
 }
 
 .caret-btn svg {
