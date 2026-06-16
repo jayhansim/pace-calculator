@@ -31,14 +31,14 @@ export function calcSpeed(paceSec) {
 }
 
 export function calcCadence(paceSec) {
-  const raw = 180 + ((300 - paceSec) / 30) * 3
+  const raw = 180 + ((330 - paceSec) / 30) * 3
   return Math.round(Math.min(200, Math.max(155, raw)))
 }
 
 export function calcStrideLength(paceSec) {
   const cadence = calcCadence(paceSec)
   const speedMPerMin = (1000 / paceSec) * 60
-  return (speedMPerMin / (cadence / 2)).toFixed(2)
+  return (speedMPerMin / cadence).toFixed(2)
 }
 
 export function generateSplits(paceSec, distKm, intervalKm, splitType) {
