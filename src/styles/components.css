@@ -181,7 +181,7 @@
 }
 
 .table td.col-split {
-  width: var(--space-96);
+  width: var(--space-80);
   text-align: right;
 }
 
@@ -256,8 +256,11 @@
   font-size: var(--fs-body-md);
   font-weight: var(--fw-medium);
   color: var(--color-text-primary);
-  min-width: var(--space-96);
   text-align: right;
+}
+
+.thead-row__labels span:last-child {
+  min-width: var(--space-80);
 }
 
 /* Compact segmented for table header */
