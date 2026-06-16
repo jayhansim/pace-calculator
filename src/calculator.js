@@ -27,7 +27,7 @@ export function calcTotalTime(paceSec, distKm) {
 }
 
 export function calcSpeed(paceSec) {
-  return (3600 / paceSec).toFixed(1)
+  return (3600 / paceSec).toFixed(2)
 }
 
 export function calcCadence(paceSec) {
