@@ -104,7 +104,7 @@ function setSlotStat(id, text, numericValue) {
   }
   if (numericValue === entry.prev) return
 
-  entry.controller.set(text, { direction: numericValue > entry.prev ? 'up' : 'down' })
+  entry.controller.set(text, { direction: numericValue > entry.prev ? 'up' : 'down', stagger: 30, bounce: 0.1 })
   entry.prev = numericValue
 }
 
@@ -121,7 +121,7 @@ function setSlotDigits(id, text, direction) {
   }
   if (text === entry.prevText) return
 
-  entry.controller.set(text, direction && { direction })
+  entry.controller.set(text, { ...(direction && { direction }), stagger: 30, bounce: 0.1 })
   entry.prevText = text
 }
 
