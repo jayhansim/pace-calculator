@@ -450,7 +450,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-24);
+  gap: var(--space-8);
 }
 
 .wheel-picker-row--labels {
@@ -481,10 +481,16 @@
 }
 
 .wheel-picker__separator {
-  text-align: center;
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-semibold);
-  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.wheel-picker__separator .pace-separator__dot {
+  width: 8px;
+  height: 8px;
 }
 
 #pace-overlay-backdrop.wheel-picker {
@@ -522,7 +528,7 @@
   justify-content: center;
   scroll-snap-align: center;
   font-size: 56px;
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-semibold);
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: tabular-nums;
   color: var(--color-text-secondary);
