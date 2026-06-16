@@ -74,12 +74,18 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  font-size: var(--fs-hero);
+  font-size: 96px;
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: tabular-nums;
   user-select: none;
+}
+
+@media (min-width: 768px) {
+  .pace-counter__display {
+    font-size: var(--fs-hero);
+  }
 }
 
 .pace-counter__controls {
@@ -92,15 +98,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 120px;
-  gap: 16px;
+  width: 14px;
+  height: 96px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
+@media (min-width:768px) {
+  .pace-separator {
+    width: 16px;
+    height: 120px;
+    gap: 16px;
+  }
+}
+
 .pace-separator__dot {
-  width: 16px;
-  height: 16px;
+  width: inherit;
+  aspect-ratio: 1;
   border-radius: 50%;
   background: var(--color-text-primary);
 }
