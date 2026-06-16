@@ -60,6 +60,12 @@
     linear-gradient(180deg, rgba(204, 204, 204, 0.10) 0%, rgba(153, 153, 153, 0.20) 100%) border-box;
 }
 
+.icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .icon-btn svg {
   width: 16px;
   height: 16px;

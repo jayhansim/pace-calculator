@@ -1,5 +1,6 @@
 import {
   DISTANCES,
+  SPLIT_FIRST_LABEL,
   formatPace,
   formatTime,
   calcTotalTime,
@@ -14,8 +15,12 @@ export const state = {
   paceSeconds: 330,
   splitInterval: '1k',
   splitType: 'even',
+  splitDeltaSec: 5,
   cadenceOverride: null,
 }
+
+export const SPLIT_DELTA_MIN = 0
+export const SPLIT_DELTA_MAX = 30
 
 export function updateUI() {
   const distKm = DISTANCES[state.distanceKey]
@@ -34,8 +39,22 @@ export function updateUI() {
   setText('stat-cadence', effectiveCadence)
   setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100))
 
+  // Split adjustment row
+  const adjustRow = document.getElementById('split-adjust')
+  if (adjustRow) {
+    if (state.splitType === 'even') {
+      adjustRow.style.display = 'none'
+    } else {
+      adjustRow.style.display = 'flex'
+      setText('split-adjust-primary', `${state.splitDeltaSec} sec ${state.splitType === 'neg' ? 'slower' : 'faster'}`)
+      setText('split-adjust-secondary', `in first ${SPLIT_FIRST_LABEL[state.distanceKey]}`)
+    }
+    setDisabled('split-delta-minus', state.splitDeltaSec <= SPLIT_DELTA_MIN)
+    setDisabled('split-delta-plus', state.splitDeltaSec >= SPLIT_DELTA_MAX)
+  }
+
   // Split table body
-  const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType, state.distanceKey)
+  const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType, state.distanceKey, state.splitDeltaSec)
   const tbody = document.getElementById('split-tbody')
   if (!tbody) return
 
@@ -56,6 +75,11 @@ export function updateUI() {
 function setText(id, value) {
   const el = document.getElementById(id)
   if (el) el.textContent = value
+}
+
+function setDisabled(id, disabled) {
+  const el = document.getElementById(id)
+  if (el) el.disabled = disabled
 }
 
 function setDigits(id, digits) {
