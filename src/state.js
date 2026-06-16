@@ -17,7 +17,7 @@ export const state = {
   splitInterval: '1k',
   splitType: 'even',
   splitDeltaSec: 5,
-  cadenceOverride: null,
+  cadence: calcCadence(330),
 }
 
 export const SPLIT_DELTA_MIN = 0
@@ -46,10 +46,9 @@ export function updateUI() {
   const speed = calcSpeed(state.paceSeconds)
   setSlotStat('stat-speed', speed, parseFloat(speed))
 
-  const effectiveCadence = state.cadenceOverride ?? calcCadence(state.paceSeconds)
-  setSlotStat('stat-cadence', String(effectiveCadence), effectiveCadence)
+  setSlotStat('stat-cadence', String(state.cadence), state.cadence)
 
-  const stride = Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100)
+  const stride = Math.round(calcStrideLength(state.paceSeconds, state.cadence) * 100)
   setSlotStat('stat-stride', String(stride), stride)
 
   // Split adjustment row

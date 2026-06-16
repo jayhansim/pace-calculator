@@ -1,6 +1,5 @@
 
 import { state, updateUI, SPLIT_DELTA_MIN, SPLIT_DELTA_MAX } from './state.js'
-import { calcCadence } from './calculator.js'
 import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
 
 function initSegmented(containerId, stateKey) {
@@ -70,7 +69,7 @@ function onPaceWheelChange() {
 }
 
 function onCadenceWheelChange(value) {
-  state.cadenceOverride = value
+  state.cadence = value
   updateUI()
 }
 
@@ -88,8 +87,7 @@ function syncPaceWheels() {
 }
 
 function syncCadenceWheels() {
-  const effectiveCadence = state.cadenceOverride ?? calcCadence(state.paceSeconds)
-  getWheelPicker('cadence').setValue(effectiveCadence, { instant: true })
+  getWheelPicker('cadence').setValue(state.cadence, { instant: true })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
