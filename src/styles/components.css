@@ -66,6 +66,26 @@
   pointer-events: none;
 }
 
+/* ── Caret Button ───────────────────────────────────── */
+.caret-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.caret-btn svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
 /* ── Segmented Control ──────────────────────────────── */
 .segmented {
   display: inline-flex;

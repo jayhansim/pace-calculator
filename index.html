@@ -34,7 +34,7 @@
         <div class="pace-section">
           <div class="pace-heading">
             <span class="pace-heading__label">Pace (min/km)</span>
-            <button id="pace-unit-toggle" class="pace-heading__caret" aria-label="Change pace unit">
+            <button id="pace-unit-toggle" class="caret-btn" aria-label="Change pace unit">
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -94,7 +94,14 @@
             <span id="stat-speed" class="stat-item__value">—</span>
           </div>
           <div class="stat-item">
-            <span class="stat-item__label">Cadence/min</span>
+            <div class="stat-item__label-row">
+              <span class="stat-item__label">Cadence/min</span>
+              <button id="cadence-unit-toggle" class="caret-btn" aria-label="Change cadence unit">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
             <span id="stat-cadence" class="stat-item__value">—</span>
           </div>
           <div class="stat-item">

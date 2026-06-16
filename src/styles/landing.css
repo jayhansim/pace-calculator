@@ -55,25 +55,6 @@
   color: var(--color-text-secondary);
 }
 
-.pace-heading__caret {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-}
-
-.pace-heading__caret svg {
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
-}
-
 .pace-display {
   display: flex;
   align-items: flex-start;
@@ -156,6 +137,13 @@
   font-size: 14px;
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
+}
+
+.stat-item__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
 }
 
 /* ── Split section ──────────────────────────────────── */
