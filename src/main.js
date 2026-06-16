@@ -1,5 +1,5 @@
 
-import { state, updateUI } from './state.js'
+import { state, updateUI, SPLIT_DELTA_MIN, SPLIT_DELTA_MAX } from './state.js'
 import { calcCadence } from './calculator.js'
 import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
 
@@ -29,6 +29,16 @@ function initPaceInput() {
   document.getElementById('pace-min-plus')?.addEventListener('click', () => stepPace(60))
   document.getElementById('pace-sec-minus')?.addEventListener('click', () => stepPace(-1))
   document.getElementById('pace-sec-plus')?.addEventListener('click', () => stepPace(1))
+}
+
+function stepSplitDelta(delta) {
+  state.splitDeltaSec = Math.max(SPLIT_DELTA_MIN, Math.min(SPLIT_DELTA_MAX, state.splitDeltaSec + delta))
+  updateUI()
+}
+
+function initSplitAdjust() {
+  document.getElementById('split-delta-minus')?.addEventListener('click', () => stepSplitDelta(-1))
+  document.getElementById('split-delta-plus')?.addEventListener('click', () => stepSplitDelta(1))
 }
 
 function initOverlay(backdropId, openBtnId, onOpen) {
@@ -87,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSegmented('interval-segmented', 'splitInterval')
   initSegmented('split-type-segmented', 'splitType')
   initPaceInput()
+  initSplitAdjust()
   initWheelPickers()
   initOverlay('overlay-backdrop', 'info-btn')
   initOverlay('pace-overlay-backdrop', 'pace-picker-toggle', syncPaceWheels)

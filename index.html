@@ -125,6 +125,25 @@
           </div>
         </div>
 
+        <div id="split-adjust" class="split-adjust" style="display:none">
+          <div class="split-adjust__info">
+            <span id="split-adjust-primary" class="split-adjust__primary"></span>
+            <span id="split-adjust-secondary" class="split-adjust__secondary"></span>
+          </div>
+          <div class="split-adjust__buttons">
+            <button id="split-delta-minus" class="icon-btn" aria-label="Decrease adjustment">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button id="split-delta-plus" class="icon-btn" aria-label="Increase adjustment">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <div class="table-wrap">
           <!-- Custom thead with embedded controls -->
           <div class="thead-row">
@@ -182,8 +201,8 @@
           <p class="overlay__text">
             <ul>
               <li><strong>Even</strong> — identical pace for every km</li>
-              <li><strong>Negative</strong> — start ~2% slower, finish ~2% faster</li>
-              <li><strong>Positive</strong> — start ~2% faster, finish ~2% slower</li>
+              <li><strong>Negative</strong> — start slower, finish faster, by the seconds/km you set</li>
+              <li><strong>Positive</strong> — start faster, finish slower, by the seconds/km you set</li>
             </ul>
           </p>
         </div>
