@@ -112,13 +112,13 @@
     linear-gradient(var(--color-gray-50), var(--color-gray-50)) padding-box,
     linear-gradient(180deg, rgba(204, 204, 204, 0.10) 0%, rgba(153, 153, 153, 0.20) 100%) border-box;
   border-radius: var(--radius-pill);
-  padding: 0 var(--space-8);
+  padding: 0 var(--space-12);
   box-shadow: var(--shadow-button);
   gap: var(--space-4);
 }
 
 .segmented__option {
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-12) clamp(var(--space-8), 3vw, var(--space-16));
   border-radius: var(--radius-inner);
   font-size: var(--fs-body-md);
   font-weight: var(--fw-semibold);
