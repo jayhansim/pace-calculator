@@ -1,5 +1,7 @@
 
 import { state, updateUI } from './state.js'
+import { calcCadence } from './calculator.js'
+import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
 
 function initSegmented(containerId, stateKey) {
   const container = document.getElementById(containerId)
@@ -14,8 +16,8 @@ function initSegmented(containerId, stateKey) {
   })
 }
 
-const PACE_MIN_SECONDS = 60
-const PACE_MAX_SECONDS = 99 * 60 + 59
+const PACE_MIN_SECONDS = 2 * 60
+const PACE_MAX_SECONDS = 12 * 60 + 59
 
 function stepPace(deltaSeconds) {
   state.paceSeconds = Math.max(PACE_MIN_SECONDS, Math.min(PACE_MAX_SECONDS, state.paceSeconds + deltaSeconds))
@@ -29,13 +31,15 @@ function initPaceInput() {
   document.getElementById('pace-sec-plus')?.addEventListener('click', () => stepPace(1))
 }
 
-function initOverlay() {
-  const backdrop = document.getElementById('overlay-backdrop')
-  const openBtn = document.getElementById('info-btn')
-  const closeBtns = document.querySelectorAll('[data-close-overlay]')
+function initOverlay(backdropId, openBtnId, onOpen) {
+  const backdrop = document.getElementById(backdropId)
+  const openBtn = document.getElementById(openBtnId)
+  if (!backdrop) return
+  const closeBtns = backdrop.querySelectorAll('[data-close-overlay]')
 
   function openOverlay() {
     backdrop.style.display = 'flex'
+    onOpen?.()
     requestAnimationFrame(() => backdrop.classList.add('is-open'))
   }
   function closeOverlay() {
@@ -45,7 +49,37 @@ function initOverlay() {
 
   openBtn?.addEventListener('click', openOverlay)
   closeBtns.forEach(btn => btn.addEventListener('click', closeOverlay))
-  backdrop?.addEventListener('click', e => { if (e.target === backdrop) closeOverlay() })
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeOverlay() })
+}
+
+function onPaceWheelChange() {
+  const minute = getWheelPicker('pace-minute').value
+  const second = getWheelPicker('pace-second').value
+  state.paceSeconds = minute * 60 + second
+  updateUI()
+}
+
+function onCadenceWheelChange(value) {
+  state.cadenceOverride = value
+  updateUI()
+}
+
+function initWheelPickers() {
+  initWheelPicker(document.querySelector('[data-wheel="pace-minute"]'), { onChange: onPaceWheelChange })
+  initWheelPicker(document.querySelector('[data-wheel="pace-second"]'), { onChange: onPaceWheelChange })
+  initWheelPicker(document.querySelector('[data-wheel="cadence"]'), { onChange: onCadenceWheelChange })
+}
+
+function syncPaceWheels() {
+  const minute = Math.floor(state.paceSeconds / 60)
+  const second = state.paceSeconds % 60
+  getWheelPicker('pace-minute').setValue(minute, { instant: true })
+  getWheelPicker('pace-second').setValue(second, { instant: true })
+}
+
+function syncCadenceWheels() {
+  const effectiveCadence = state.cadenceOverride ?? calcCadence(state.paceSeconds)
+  getWheelPicker('cadence').setValue(effectiveCadence, { instant: true })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,6 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initSegmented('interval-segmented', 'splitInterval')
   initSegmented('split-type-segmented', 'splitType')
   initPaceInput()
-  initOverlay()
+  initWheelPickers()
+  initOverlay('overlay-backdrop', 'info-btn')
+  initOverlay('pace-overlay-backdrop', 'pace-picker-toggle', syncPaceWheels)
+  initOverlay('cadence-overlay-backdrop', 'cadence-picker-toggle', syncCadenceWheels)
+  syncPaceWheels()
+  syncCadenceWheels()
   updateUI()
 })

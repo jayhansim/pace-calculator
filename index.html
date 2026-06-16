@@ -34,7 +34,7 @@
         <div class="pace-section">
           <div class="pace-heading">
             <span class="pace-heading__label">Pace (min/km)</span>
-            <button id="pace-unit-toggle" class="caret-btn" aria-label="Change pace unit">
+            <button id="pace-picker-toggle" class="caret-btn" aria-label="Edit pace">
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -96,7 +96,7 @@
           <div class="stat-item">
             <div class="stat-item__label-row">
               <span class="stat-item__label">Cadence/min</span>
-              <button id="cadence-unit-toggle" class="caret-btn" aria-label="Change cadence unit">
+              <button id="cadence-picker-toggle" class="caret-btn" aria-label="Edit cadence">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -192,6 +192,80 @@
           <p class="overlay__text">
             Cadence and stride length are modelled estimates based on your pace. Actual values vary by runner.
           </p>
+        </div>
+      </div>
+      <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>
+    </div>
+  </div>
+
+  <!-- Pace picker overlay -->
+  <div id="pace-overlay-backdrop" class="overlay-backdrop" style="display:none">
+    <div class="overlay">
+      <div class="overlay__header">
+        <span class="overlay__title">Pace</span>
+        <svg class="overlay__close-icon" data-close-overlay viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="overlay__body">
+        <div class="wheel-picker-row wheel-picker-row--labels">
+          <span class="wheel-picker__arrow-spacer" aria-hidden="true"></span>
+          <span class="overlay__section-label wheel-picker-label">Minute</span>
+          <span class="wheel-picker__separator-spacer" aria-hidden="true"></span>
+          <span class="overlay__section-label wheel-picker-label">Second</span>
+          <span class="wheel-picker__arrow-spacer" aria-hidden="true"></span>
+        </div>
+        <div class="wheel-picker-row">
+          <svg class="wheel-picker__arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="wheel-picker" data-wheel="pace-minute" data-min="2" data-max="12" role="listbox" aria-label="Minute" tabindex="0">
+            <div class="wheel-picker__viewport">
+              <div class="wheel-picker__track"></div>
+            </div>
+          </div>
+          <span class="wheel-picker__separator" aria-hidden="true">:</span>
+          <div class="wheel-picker" data-wheel="pace-second" data-min="0" data-max="59" role="listbox" aria-label="Second" tabindex="0">
+            <div class="wheel-picker__viewport">
+              <div class="wheel-picker__track"></div>
+            </div>
+          </div>
+          <svg class="wheel-picker__arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>
+    </div>
+  </div>
+
+  <!-- Cadence picker overlay -->
+  <div id="cadence-overlay-backdrop" class="overlay-backdrop" style="display:none">
+    <div class="overlay">
+      <div class="overlay__header">
+        <span class="overlay__title">Cadence</span>
+        <svg class="overlay__close-icon" data-close-overlay viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="overlay__body">
+        <div class="wheel-picker-row wheel-picker-row--labels">
+          <span class="wheel-picker__arrow-spacer" aria-hidden="true"></span>
+          <span class="overlay__section-label">Steps per minute</span>
+          <span class="wheel-picker__arrow-spacer" aria-hidden="true"></span>
+        </div>
+        <div class="wheel-picker-row">
+          <svg class="wheel-picker__arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="wheel-picker" data-wheel="cadence" data-min="120" data-max="240" role="listbox" aria-label="Steps per minute" tabindex="0">
+            <div class="wheel-picker__viewport">
+              <div class="wheel-picker__track"></div>
+            </div>
+          </div>
+          <svg class="wheel-picker__arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
       <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>

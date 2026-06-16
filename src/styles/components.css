@@ -342,7 +342,9 @@
 .overlay-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(204, 204, 204, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -413,7 +415,7 @@
 .overlay__body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-40);
+  gap: var(--space-16);
 }
 
 .overlay__section {
@@ -441,4 +443,96 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
+}
+
+/* ── Wheel Picker ───────────────────────────────────── */
+.wheel-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.wheel-picker-row--labels {
+  margin-bottom: var(--space-8);
+}
+
+.wheel-picker-label {
+  width: 72px;
+  text-align: center;
+}
+
+.wheel-picker__arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+}
+
+.wheel-picker__arrow-spacer {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.wheel-picker__separator,
+.wheel-picker__separator-spacer {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.wheel-picker__separator {
+  text-align: center;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+#pace-overlay-backdrop.wheel-picker {
+  position: relative;
+  width: 72px;
+}
+
+#cadence-overlay-backdrop.wheel-picker {
+  position: relative;
+  width: 108px;
+}
+
+.wheel-picker__viewport {
+  --wheel-row-h: 56px;
+  height: calc(var(--wheel-row-h) * 5);
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+}
+
+.wheel-picker__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.wheel-picker__track {
+  padding-block: calc(var(--wheel-row-h) * 2);
+}
+
+.wheel-picker__row {
+  height: var(--wheel-row-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  font-size: 56px;
+  font-weight: var(--fw-regular);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 150ms ease, color 150ms ease;
+}
+
+.wheel-picker__row--center {
+  opacity: 1;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
 }

@@ -35,8 +35,7 @@ export function calcCadence(paceSec) {
   return Math.round(Math.min(200, Math.max(155, raw)))
 }
 
-export function calcStrideLength(paceSec) {
-  const cadence = calcCadence(paceSec)
+export function calcStrideLength(paceSec, cadence) {
   const speedMPerMin = (1000 / paceSec) * 60
   return (speedMPerMin / cadence).toFixed(2)
 }

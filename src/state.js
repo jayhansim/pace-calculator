@@ -14,6 +14,7 @@ export const state = {
   paceSeconds: 330,
   splitInterval: '1k',
   splitType: 'even',
+  cadenceOverride: null,
 }
 
 export function updateUI() {
@@ -29,8 +30,9 @@ export function updateUI() {
   const totalSec = calcTotalTime(state.paceSeconds, distKm)
   setText('stat-time', formatTime(totalSec))
   setText('stat-speed', calcSpeed(state.paceSeconds))
-  setText('stat-cadence', calcCadence(state.paceSeconds))
-  setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds) * 100))
+  const effectiveCadence = state.cadenceOverride ?? calcCadence(state.paceSeconds)
+  setText('stat-cadence', effectiveCadence)
+  setText('stat-stride', Math.round(calcStrideLength(state.paceSeconds, effectiveCadence) * 100))
 
   // Split table body
   const splits = generateSplits(state.paceSeconds, distKm, intervalKm, state.splitType)
