@@ -32,7 +32,26 @@
   --space-40: 40px;
   --space-80: 80px;
   --space-96: 96px;
+}
 
+/* Mobile spacing: all --space-* values are 80% of their desktop counterparts.
+   When adding a new spacing token above, add its ×0.8 value here too. */
+@media (max-width: 767px) {
+  :root {
+    --space-4:   3.2px;
+    --space-8:   6.4px;
+    --space-12:  9.6px;
+    --space-16: 12.8px;
+    --space-20:   16px;
+    --space-24: 19.2px;
+    --space-32: 25.6px;
+    --space-40:   32px;
+    --space-80:   64px;
+    --space-96: 76.8px;
+  }
+}
+
+:root {
   /* Layout */
   --max-width-content: 720px;
 
@@ -47,19 +66,4 @@
   --fw-regular:  450;
   --fw-medium:   500;
   --fw-semibold: 600;
-}
-
-@media (max-width: 767px) {
-  :root {
-    --space-4:   3.2px;
-    --space-8:   6.4px;
-    --space-12:  9.6px;
-    --space-16: 12.8px;
-    --space-20:   16px;
-    --space-24: 19.2px;
-    --space-32: 25.6px;
-    --space-40:   32px;
-    --space-80:   64px;
-    --space-96: 76.8px;
-  }
 }
