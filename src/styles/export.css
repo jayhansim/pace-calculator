@@ -55,7 +55,7 @@
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
   font-variant-numeric: tabular-nums;
-  margin-right: 8px;
+  margin-right: 4px;
 }
 
 .export-table__dist-pace {
@@ -85,8 +85,30 @@
     position: static !important;
     left: auto !important;
     display: table !important;
-    width: 64mm;
-    margin: 20mm auto;
+    width: 50mm;
+    margin: 0mm;
     border: 1px solid #eeeeee;
+  }
+
+  .export-table__head th {
+    padding: 0 6px;
+    height:18px;
+  }
+  
+  .export-table__row td {
+    padding: 0px 6px;
+    height: 16px;
+  }
+
+  .export-table__head {
+    font-size: 10px;
+  }
+  
+  .export-table__time, .export-table__dist-label {
+    font-size: 10px;
+  }
+
+  .export-table__dist-pace {
+    font-size: 9px;
   }
 }

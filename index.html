@@ -166,20 +166,10 @@
         </div>
 
         <div class="export-actions">
-          <button class="btn btn--md" id="btn-export-png">Save split (PNG)</button>
-          <button class="btn btn--md" id="btn-export-pdf">Save split (PDF)</button>
+          <button class="btn btn--md" id="btn-export-png">Save as split band (PNG)</button>
+          <!-- <button class="btn btn--md" id="btn-export-pdf">Save split (PDF)</button> -->
         </div>
 
-        <!-- Hidden export table — used by html2canvas (PNG) and window.print (PDF) -->
-        <table id="export-table" aria-hidden="true">
-          <thead>
-            <tr class="export-table__head">
-              <th id="export-pace-label"></th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody id="export-tbody"></tbody>
-        </table>
       </div>
 
       <!-- Info button -->
@@ -307,6 +297,17 @@
       <button class="btn btn--lg" style="width:100%" data-close-overlay>Close</button>
     </div>
   </div>
+
+  <!-- Hidden export table — direct child of body so @media print can reveal it -->
+  <table id="export-table" aria-hidden="true">
+    <thead>
+      <tr class="export-table__head">
+        <th id="export-pace-label"></th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="export-tbody"></tbody>
+  </table>
 
 </body>
 </html>
