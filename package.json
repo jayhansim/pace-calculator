@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.0.0",
+    "html2canvas": "^1.4.1",
     "slot-text": "^0.3.1"
   }
 }

@@ -1,0 +1,87 @@
+/* ── Export table (off-screen, rendered by html2canvas for PNG) ── */
+
+#export-table {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 360px;
+  background: #ffffff;
+  font-family: 'Geist Variable', 'Geist', sans-serif;
+  border: 1px solid var(--color-gray-50);
+  overflow: hidden;
+}
+
+.export-table__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000;
+  color: #ffffff;
+  padding: 0 10px;
+  height: 30px;
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.export-table__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #ffffff;
+  min-height: 24px;
+}
+
+.export-table__row--alt {
+  background: var(--color-gray-25);
+}
+
+.export-table__dist {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.export-table__dist-label {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  min-width: 36px;
+}
+
+.export-table__dist-pace {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.export-table__time {
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  min-width: 66px;
+}
+
+/* ── Print styles (PDF via window.print) ── */
+
+@media print {
+  body > * {
+    display: none !important;
+  }
+
+  #export-table {
+    position: static !important;
+    left: auto !important;
+    display: block !important;
+    width: 90mm;
+    margin: 20mm auto;
+    border: 1px solid #eeeeee;
+  }
+}

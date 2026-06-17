@@ -10,6 +10,7 @@ import {
   calcStrideLength,
   generateSplits,
 } from './calculator.js'
+import { buildExportTable } from './export.js'
 
 export const state = {
   distanceKey: 'full',
@@ -82,6 +83,8 @@ export function updateUI() {
       <td class="col-split">${formatTime(row.cumTime)}</td>
     </tr>
   `).join('')
+
+  buildExportTable(state, splits)
 }
 
 function setText(id, value) {

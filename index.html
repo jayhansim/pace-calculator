@@ -164,6 +164,20 @@
             </tbody>
           </table>
         </div>
+
+        <div class="export-actions">
+          <button class="btn btn--md" id="btn-export-png">Save split (PNG)</button>
+          <button class="btn btn--md" id="btn-export-pdf">Save split (PDF)</button>
+        </div>
+
+        <!-- Hidden export table — used by html2canvas (PNG) and window.print (PDF) -->
+        <div id="export-table" aria-hidden="true">
+          <div class="export-table__head">
+            <span id="export-pace-label"></span>
+            <span>Time</span>
+          </div>
+          <div id="export-tbody"></div>
+        </div>
       </div>
 
       <!-- Info button -->

@@ -1,6 +1,8 @@
 
 import { state, updateUI, SPLIT_DELTA_MIN, SPLIT_DELTA_MAX } from './state.js'
 import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
+import { exportPNG, exportPDF } from './export.js'
+import './styles/export.css'
 
 function initSegmented(containerId, stateKey) {
   const container = document.getElementById(containerId)
@@ -103,4 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
   syncPaceWheels()
   syncCadenceWheels()
   updateUI()
+
+  document.getElementById('btn-export-png')?.addEventListener('click', exportPNG)
+  document.getElementById('btn-export-pdf')?.addEventListener('click', exportPDF)
 })
