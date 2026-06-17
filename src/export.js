@@ -10,13 +10,13 @@ export function buildExportTable(state, splits) {
   paceEl.textContent = `Pace ${min}:${sec}`
 
   tbody.innerHTML = splits.map((row, i) => `
-    <div class="export-table__row${i % 2 === 1 ? ' export-table__row--alt' : ''}">
-      <div class="export-table__dist">
+    <tr class="export-table__row${i % 2 === 1 ? ' export-table__row--alt' : ''}">
+      <td class="export-table__dist">
         <span class="export-table__dist-label">${row.distLabel}</span>
-        <span class="export-table__dist-pace">${formatPace(row.lapPace).min}:${formatPace(row.lapPace).sec}min/km</span>
-      </div>
-      <span class="export-table__time">${formatTime(row.cumTime)}</span>
-    </div>
+        <span class="export-table__dist-pace">${formatPace(row.lapPace).min}:${formatPace(row.lapPace).sec}min</span>
+      </td>
+      <td class="export-table__time">${formatTime(row.cumTime)}</td>
+    </tr>
   `).join('')
 }
 

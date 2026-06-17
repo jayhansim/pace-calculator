@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Export Table Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Courier New', Courier, monospace, sans-serif;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .preview-wrap {
+      display: inline-block;
+    }
+
+    .save-link {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #0066cc;
+      cursor: pointer;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* ── Export table styles (mirrored from export.css) ── */
+
+    #export-table {
+      width: 240px;
+      background: #ffffff;
+      /* font-family: system-ui, sans-serif; */
+      border: 1px solid #e5e5e5;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .export-table__head {
+      background: #000000;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      /* font-variant-numeric: tabular-nums; */
+    }
+
+    .export-table__head th {
+      padding: 0 10px;
+      height: 30px;
+      vertical-align: middle;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .export-table__head th:last-child {
+      text-align: right;
+    }
+
+    .export-table__row td {
+      padding: 0 10px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
+    .export-table__row {
+      background: #ffffff;
+    }
+
+    .export-table__row--alt {
+      background: #f9f9f9;
+    }
+
+    .export-table__dist-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111111;
+      /* font-variant-numeric: tabular-nums; */
+      margin-right: 8px;
+    }
+
+    .export-table__dist-pace {
+      font-size: 11px;
+      font-weight: 400;
+      color: #888888;
+      /* font-variant-numeric: tabular-nums; */
+      white-space: nowrap;
+    }
+
+    .export-table__time {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111111;
+      /* font-variant-numeric: tabular-nums; */
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-wrap">
+    <h2>Full marathon, Pace 5:30</h2>
+    <table id="export-table">
+      <thead>
+        <tr class="export-table__head">
+          <th>Pace 5:30</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody id="export-tbody">
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">1K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">5:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">2K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">11:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">3K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">16:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">4K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">22:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">5K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">27:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">6K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">33:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">7K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">38:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">8K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">44:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">9K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">49:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">10K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">55:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">11K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:00:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">12K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:06:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">13K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:11:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">14K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:17:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">15K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:22:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">16K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:28:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">17K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:33:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">18K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:39:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">19K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:44:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">20K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:50:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">21K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">1:55:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">22K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:01:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">23K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:06:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">24K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:12:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">25K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:17:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">26K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:23:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">27K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:28:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">28K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:34:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">29K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:39:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">30K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:45:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">31K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:50:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">32K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">2:56:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">33K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:01:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">34K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:07:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">35K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:12:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">36K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:18:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">37K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:23:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">38K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:29:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">39K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:34:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">40K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:40:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">41K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:45:30</td></tr>
+        <tr class="export-table__row export-table__row--alt"><td class="export-table__dist"><span class="export-table__dist-label">42K</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:51:00</td></tr>
+        <tr class="export-table__row"><td class="export-table__dist"><span class="export-table__dist-label">Finish</span><span class="export-table__dist-pace">5:30min</span></td><td class="export-table__time">3:51:42</td></tr>
+      </tbody>
+    </table>
+    <button class="save-link" id="save-png">Save as PNG</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    document.getElementById('save-png').addEventListener('click', function () {
+      var el = document.getElementById('export-table')
+      html2canvas(el, { scale: 2, backgroundColor: '#ffffff', useCORS: true }).then(function (canvas) {
+        var link = document.createElement('a')
+        link.download = 'splits-preview.png'
+        link.href = canvas.toDataURL('image/png')
+        link.click()
+      })
+    })
+  </script>
+
+</body>
+</html>

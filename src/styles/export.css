@@ -4,33 +4,42 @@
   position: fixed;
   left: -9999px;
   top: 0;
-  width: 360px;
+  width: 240px;
   background: #ffffff;
-  font-family: 'Geist Variable', 'Geist', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border: 1px solid var(--color-gray-50);
-  overflow: hidden;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .export-table__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #000000;
   color: #ffffff;
-  padding: 0 10px;
-  height: 30px;
   font-size: var(--fs-body-md);
   font-weight: var(--fw-semibold);
   font-variant-numeric: tabular-nums;
 }
 
+.export-table__head th {
+  padding: 0 10px 12px;
+  height: 30px;
+  vertical-align: middle;
+  font-weight: var(--fw-semibold);
+  text-align: left;
+}
+
+.export-table__head th:last-child {
+  text-align: right;
+}
+
+.export-table__row td {
+  padding: 0px 10px 12px;
+  height: 24px;
+  vertical-align: middle;
+}
+
 .export-table__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 10px;
   background: #ffffff;
-  min-height: 24px;
 }
 
 .export-table__row--alt {
@@ -38,10 +47,7 @@
 }
 
 .export-table__dist {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  line-height: 1;
+  font-size: var(--fs-body-md);
 }
 
 .export-table__dist-label {
@@ -49,7 +55,7 @@
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
   font-variant-numeric: tabular-nums;
-  min-width: 36px;
+  margin-right: 8px;
 }
 
 .export-table__dist-pace {
@@ -66,7 +72,6 @@
   color: var(--color-text-primary);
   font-variant-numeric: tabular-nums;
   text-align: right;
-  min-width: 66px;
 }
 
 /* ── Print styles (PDF via window.print) ── */
@@ -79,8 +84,8 @@
   #export-table {
     position: static !important;
     left: auto !important;
-    display: block !important;
-    width: 90mm;
+    display: table !important;
+    width: 64mm;
     margin: 20mm auto;
     border: 1px solid #eeeeee;
   }

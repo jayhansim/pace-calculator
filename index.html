@@ -171,13 +171,15 @@
         </div>
 
         <!-- Hidden export table — used by html2canvas (PNG) and window.print (PDF) -->
-        <div id="export-table" aria-hidden="true">
-          <div class="export-table__head">
-            <span id="export-pace-label"></span>
-            <span>Time</span>
-          </div>
-          <div id="export-tbody"></div>
-        </div>
+        <table id="export-table" aria-hidden="true">
+          <thead>
+            <tr class="export-table__head">
+              <th id="export-pace-label"></th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="export-tbody"></tbody>
+        </table>
       </div>
 
       <!-- Info button -->
