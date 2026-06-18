@@ -11,7 +11,11 @@ export function initWheelPicker(el, { onChange } = {}) {
   const digits = String(max).length
   const viewport = el.querySelector('.wheel-picker__viewport')
   const track = el.querySelector('.wheel-picker__track')
-  const rowHeight = parseFloat(getComputedStyle(viewport).getPropertyValue('--wheel-row-h'))
+
+  function getRowHeight() {
+    const value = parseFloat(getComputedStyle(viewport).getPropertyValue('--wheel-row-h'))
+    return Number.isFinite(value) && value > 0 ? value : 56
+  }
 
   const rows = []
   const fragment = document.createDocumentFragment()
@@ -31,18 +35,19 @@ export function initWheelPicker(el, { onChange } = {}) {
   let centerRow = null
 
   function markCenter(value) {
+    const safeValue = Number.isFinite(value) ? clamp(value, min, max) : min
     if (centerRow) {
       centerRow.classList.remove('wheel-picker__row--center')
       centerRow.setAttribute('aria-selected', 'false')
     }
-    centerRow = rows[value - min]
+    centerRow = rows[safeValue - min]
     centerRow.classList.add('wheel-picker__row--center')
     centerRow.setAttribute('aria-selected', 'true')
-    currentValue = value
+    currentValue = safeValue
   }
 
   function scrollToValue(value, { instant = false } = {}) {
-    const top = (value - min) * rowHeight
+    const top = (value - min) * getRowHeight()
     if (instant) {
       viewport.scrollTop = top
     } else {
@@ -54,14 +59,45 @@ export function initWheelPicker(el, { onChange } = {}) {
   viewport.addEventListener('scroll', () => {
     clearTimeout(settleTimer)
     settleTimer = setTimeout(() => {
-      const index = clamp(Math.round(viewport.scrollTop / rowHeight), 0, max - min)
+      const index = clamp(Math.round(viewport.scrollTop / getRowHeight()), 0, max - min)
       const value = min + index
       markCenter(value)
       onChange?.(value)
     }, 120)
   })
 
+  let drag = null
+  let suppressClick = false
+
+  viewport.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse') return
+    drag = { startY: e.clientY, startScroll: viewport.scrollTop, moved: false }
+    viewport.setPointerCapture(e.pointerId)
+    viewport.classList.add('wheel-picker__viewport--dragging')
+  })
+
+  viewport.addEventListener('pointermove', e => {
+    if (!drag) return
+    const deltaY = e.clientY - drag.startY
+    if (Math.abs(deltaY) > 3) drag.moved = true
+    viewport.scrollTop = drag.startScroll - deltaY
+  })
+
+  function endDrag(e) {
+    if (!drag) return
+    if (drag.moved) suppressClick = true
+    viewport.releasePointerCapture(e.pointerId)
+    viewport.classList.remove('wheel-picker__viewport--dragging')
+    drag = null
+  }
+  viewport.addEventListener('pointerup', endDrag)
+  viewport.addEventListener('pointercancel', endDrag)
+
   track.addEventListener('click', e => {
+    if (suppressClick) {
+      suppressClick = false
+      return
+    }
     const row = e.target.closest('.wheel-picker__row')
     if (!row) return
     scrollToValue(Number(row.dataset.value))

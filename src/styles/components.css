@@ -521,6 +521,13 @@
   scrollbar-width: none;
   mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  cursor: grab;
+}
+
+.wheel-picker__viewport--dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
 }
 
 .wheel-picker__viewport::-webkit-scrollbar {

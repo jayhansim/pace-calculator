@@ -59,8 +59,10 @@ function initOverlay(backdropId, openBtnId, onOpen) {
 
   function openOverlay() {
     backdrop.style.display = 'flex'
-    onOpen?.()
-    requestAnimationFrame(() => backdrop.classList.add('is-open'))
+    requestAnimationFrame(() => {
+      backdrop.classList.add('is-open')
+      requestAnimationFrame(() => onOpen?.())
+    })
   }
   function closeOverlay() {
     backdrop.classList.remove('is-open')
@@ -84,21 +86,29 @@ function onCadenceWheelChange(value) {
   updateUI()
 }
 
+function safeInitWheelPicker(el, opts) {
+  try {
+    initWheelPicker(el, opts)
+  } catch (err) {
+    console.error('Failed to init wheel picker', el?.dataset?.wheel, err)
+  }
+}
+
 function initWheelPickers() {
-  initWheelPicker(document.querySelector('[data-wheel="pace-minute"]'), { onChange: onPaceWheelChange })
-  initWheelPicker(document.querySelector('[data-wheel="pace-second"]'), { onChange: onPaceWheelChange })
-  initWheelPicker(document.querySelector('[data-wheel="cadence"]'), { onChange: onCadenceWheelChange })
+  safeInitWheelPicker(document.querySelector('[data-wheel="pace-minute"]'), { onChange: onPaceWheelChange })
+  safeInitWheelPicker(document.querySelector('[data-wheel="pace-second"]'), { onChange: onPaceWheelChange })
+  safeInitWheelPicker(document.querySelector('[data-wheel="cadence"]'), { onChange: onCadenceWheelChange })
 }
 
 function syncPaceWheels() {
   const minute = Math.floor(state.paceSeconds / 60)
   const second = state.paceSeconds % 60
-  getWheelPicker('pace-minute').setValue(minute, { instant: true })
-  getWheelPicker('pace-second').setValue(second, { instant: true })
+  getWheelPicker('pace-minute')?.setValue(minute, { instant: true })
+  getWheelPicker('pace-second')?.setValue(second, { instant: true })
 }
 
 function syncCadenceWheels() {
-  getWheelPicker('cadence').setValue(state.cadence, { instant: true })
+  getWheelPicker('cadence')?.setValue(state.cadence, { instant: true })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -117,8 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initOverlay('overlay-backdrop', 'info-btn')
   initOverlay('pace-overlay-backdrop', 'pace-picker-toggle', syncPaceWheels)
   initOverlay('cadence-overlay-backdrop', 'cadence-picker-toggle', syncCadenceWheels)
-  syncPaceWheels()
-  syncCadenceWheels()
   updateUI()
 
   document.getElementById('btn-export-png')?.addEventListener('click', exportPNG)
