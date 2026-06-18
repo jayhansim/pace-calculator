@@ -11,6 +11,7 @@ import {
   generateSplits,
 } from './calculator.js'
 import { buildExportTable } from './export.js'
+import { syncStateToUrl } from './urlParams.js'
 
 export const state = {
   distanceKey: 'full',
@@ -27,6 +28,8 @@ export const SPLIT_DELTA_MAX = 30
 let prevPaceSeconds = null
 
 export function updateUI() {
+  syncStateToUrl(state)
+
   const distKm = DISTANCES[state.distanceKey]
   const intervalKm = state.splitInterval === '1k' ? 1 : 5
 

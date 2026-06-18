@@ -1,4 +1,4 @@
-import { DISTANCES } from './calculator.js'
+import { DISTANCES, formatPace } from './calculator.js'
 
 const PACE_DEFAULT = 330
 const PACE_MIN = 120
@@ -37,5 +37,18 @@ export function parseUrlParams() {
     distanceKey: parseDistance(params.get('dist')),
     paceSeconds: parsePace(params.get('pace')),
     cadence: parseCadence(params.get('cad')),
+  }
+}
+
+export function syncStateToUrl({ distanceKey, paceSeconds, cadence }) {
+  const { min, sec } = formatPace(paceSeconds)
+  const params = new URLSearchParams(window.location.search)
+  params.set('dist', distanceKey)
+  params.set('pace', `${min}:${sec}`)
+  params.set('cad', String(cadence))
+
+  const newSearch = `?${params.toString()}`
+  if (newSearch !== window.location.search) {
+    history.replaceState(null, '', newSearch + window.location.hash)
   }
 }
