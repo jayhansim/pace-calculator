@@ -5,10 +5,7 @@ export default defineConfig({
   base: './',
   build: {
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        components: resolve(__dirname, 'components.html'),
-      },
+      input: resolve(__dirname, 'index.html'),
     },
   },
 })
