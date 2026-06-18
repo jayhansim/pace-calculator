@@ -2,6 +2,7 @@
 import { state, updateUI, SPLIT_DELTA_MIN, SPLIT_DELTA_MAX } from './state.js'
 import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
 import { exportPNG, exportPDF } from './export.js'
+import { parseUrlParams } from './urlParams.js'
 import './styles/export.css'
 
 function initSegmented(containerId, stateKey) {
@@ -14,6 +15,14 @@ function initSegmented(containerId, stateKey) {
       state[stateKey] = opt.dataset.value
       updateUI()
     })
+  })
+}
+
+function setSegmentedSelection(containerId, value) {
+  const container = document.getElementById(containerId)
+  if (!container) return
+  container.querySelectorAll('.segmented__option').forEach(opt => {
+    opt.classList.toggle('segmented__option--selected', opt.dataset.value === value)
   })
 }
 
@@ -93,9 +102,15 @@ function syncCadenceWheels() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const { distanceKey, paceSeconds, cadence } = parseUrlParams()
+  state.distanceKey = distanceKey
+  state.paceSeconds = paceSeconds
+  state.cadence = cadence
+
   initSegmented('distance-segmented', 'distanceKey')
   initSegmented('interval-segmented', 'splitInterval')
   initSegmented('split-type-segmented', 'splitType')
+  setSegmentedSelection('distance-segmented', state.distanceKey)
   initPaceInput()
   initSplitAdjust()
   initWheelPickers()
