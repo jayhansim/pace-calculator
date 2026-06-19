@@ -12,15 +12,13 @@
   box-shadow: var(--shadow-button);
   font-weight: var(--fw-medium);
   white-space: nowrap;
-  transition: background 120ms ease;
+  transition: box-shadow 0.2s ease;
   -webkit-user-select: none;
   user-select: none;
 }
 
 .btn:hover {
-  background:
-    linear-gradient(var(--color-gray-100), var(--color-gray-100)) padding-box,
-    linear-gradient(180deg, rgba(204, 204, 204, 0.10) 0%, rgba(153, 153, 153, 0.20) 100%) border-box;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.08);
 }
 
 .btn--lg {
@@ -51,13 +49,11 @@
   box-shadow: var(--shadow-button);
   overflow: hidden;
   flex-shrink: 0;
-  transition: background 120ms ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .icon-btn:hover {
-  background:
-    linear-gradient(var(--color-gray-100), var(--color-gray-100)) padding-box,
-    linear-gradient(180deg, rgba(204, 204, 204, 0.10) 0%, rgba(153, 153, 153, 0.20) 100%) border-box;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.08);
 }
 
 .icon-btn:disabled {
@@ -123,7 +119,7 @@
   font-size: var(--fs-body-md);
   font-weight: var(--fw-semibold);
   color: var(--color-text-unselected);
-  transition: background 120ms ease, color 120ms ease;
+  transition: background 0.2s ease, color 0.2s ease;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
