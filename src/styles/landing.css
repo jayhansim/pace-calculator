@@ -285,4 +285,5 @@
 .info-btn-wrap {
   display: flex;
   justify-content: center;
+  margin: var(--space-80) 0;
 }
