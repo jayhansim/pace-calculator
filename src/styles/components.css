@@ -181,7 +181,8 @@
 }
 
 .table tbody tr.row--highlight {
-  background: var(--color-green-100);
+  background: var(--color-accent);
+  color: var(--color-white);
 }
 
 .table td {
@@ -214,6 +215,12 @@
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
   margin-top: 2px;
+}
+
+.table tbody tr.row--highlight .td-primary,
+.table tbody tr.row--highlight .td-secondary,
+.table tbody tr.row--highlight td.col-lap {
+  color: var(--color-white);
 }
 
 /* Mobile table rows */
