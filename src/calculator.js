@@ -14,8 +14,8 @@ export const SPLIT_SEGMENTS = {
   'full': { first: 21.0975, last: 21.0975 },
 }
 
-export const SPLIT_FIRST_LABEL = {
-  '5k': '1K', '10k': '3K', 'half': '5K', '30k': '10K', 'full': 'half',
+export const SPLIT_LAST_LABEL = {
+  '5k': 'final 1K', '10k': 'final 3K', 'half': 'final 5K', '30k': 'final 10K', 'full': 'second half',
 }
 
 export function formatPace(totalSeconds) {

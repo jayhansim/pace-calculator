@@ -1,7 +1,7 @@
 import { slotText } from 'slot-text'
 import {
   DISTANCES,
-  SPLIT_FIRST_LABEL,
+  SPLIT_LAST_LABEL,
   formatPace,
   formatTime,
   calcTotalTime,
@@ -62,8 +62,8 @@ export function updateUI() {
       adjustRow.style.display = 'none'
     } else {
       adjustRow.style.display = 'flex'
-      setText('split-adjust-primary', `${state.splitDeltaSec} sec ${state.splitType === 'neg' ? 'slower' : 'faster'}`)
-      setText('split-adjust-secondary', `in first ${SPLIT_FIRST_LABEL[state.distanceKey]}`)
+      setText('split-adjust-primary', `${state.splitDeltaSec} sec/km ${state.splitType === 'neg' ? 'faster' : 'slower'}`)
+      setText('split-adjust-secondary', `in the ${SPLIT_LAST_LABEL[state.distanceKey]}`)
     }
     setDisabled('split-delta-minus', state.splitDeltaSec <= SPLIT_DELTA_MIN)
     setDisabled('split-delta-plus', state.splitDeltaSec >= SPLIT_DELTA_MAX)
