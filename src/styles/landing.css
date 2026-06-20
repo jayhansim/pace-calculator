@@ -1,6 +1,6 @@
 /* ── Hero ───────────────────────────────────────────── */
 .hero {
-  height: 120px;
+  height: 160px;
   background-image: url('../images/header-bg.jpg');
   background-size: cover;
   background-position: bottom;
@@ -26,10 +26,6 @@
 }
 
 @media (min-width: 768px) {
-  .hero {
-    height: 160px;
-  }
-
   .hero__text {
     font-size: 48px;
   }
