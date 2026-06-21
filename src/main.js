@@ -3,6 +3,8 @@ import { state, updateUI, SPLIT_DELTA_MIN, SPLIT_DELTA_MAX } from './state.js'
 import { initWheelPicker, getWheelPicker } from './wheelPicker.js'
 import { exportPNG, exportPDF } from './export.js'
 import { parseUrlParams } from './urlParams.js'
+import particlesScriptUrl from 'particles.js/particles.js?url'
+import particlesConfig from './particlesConfig.js'
 import './styles/export.css'
 
 function initSegmented(containerId, stateKey) {
@@ -49,6 +51,16 @@ function stepSplitDelta(delta) {
 function initSplitAdjust() {
   document.getElementById('split-delta-minus')?.addEventListener('click', () => stepSplitDelta(-1))
   document.getElementById('split-delta-plus')?.addEventListener('click', () => stepSplitDelta(1))
+}
+
+function initParticles() {
+  if (!document.getElementById('particles-js')) return
+  // particles.js relies on `arguments.callee`, which throws under the strict
+  // mode that ES module imports run in — load it as a classic script instead.
+  const script = document.createElement('script')
+  script.src = particlesScriptUrl
+  script.onload = () => window.particlesJS?.('particles-js', particlesConfig)
+  document.body.appendChild(script)
 }
 
 function initOverlay(backdropId, openBtnId, onOpen) {
@@ -127,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOverlay('overlay-backdrop', 'info-btn')
   initOverlay('pace-overlay-backdrop', 'pace-picker-toggle', syncPaceWheels)
   initOverlay('cadence-overlay-backdrop', 'cadence-picker-toggle', syncCadenceWheels)
+  initParticles()
   updateUI()
 
   document.getElementById('btn-export-png')?.addEventListener('click', exportPNG)
