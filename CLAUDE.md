@@ -21,6 +21,8 @@ No test runner or linter is configured.
 
 Only `index.html` is registered in `vite.config.js` via `rollupOptions.input` — `components.html` is dev-only and intentionally excluded from the production build.
 
+There's also `export-preview.html` at the repo root — a standalone scratch page (inline `<script>`, html2canvas loaded from a CDN, no `src/` imports) for manually previewing the export-table markup. It isn't wired into Vite at all, not just excluded from the build.
+
 ### Data flow
 
 State lives in a single plain object in `src/state.js`. Any user interaction mutates `state` and immediately calls `updateUI()`, which re-renders the DOM in place. The split table (`#split-tbody`) is fully rebuilt on every update (max ~42 rows).
@@ -39,6 +41,7 @@ User event → mutate state → updateUI() → DOM writes
 | `src/wheelPicker.js` | Drag/scroll wheel picker widget used for numeric inputs (pace, cadence). |
 | `src/export.js` | Builds the export table and renders it to PNG/PDF via `html2canvas`. |
 | `src/urlParams.js` | Parses pace/cadence/distance state from URL query params on load. |
+| `src/particlesConfig.js` | Config object for the footer particle effect, loaded via the `particles.js` package and initialized in `main.js`. |
 | `src/styles/tokens.css` | Single source of truth for all design tokens (colors, spacing, radii, type scale). |
 | `src/styles/components.css` | `.btn`, `.icon-btn`, `.segmented`, `.table-wrap`, `.overlay-backdrop`, `.text-link`, `.wheel-picker` — all reusable component styles. |
 | `src/styles/bundle.css` | The CSS entry point linked directly from `index.html` (`@import`s Geist, tokens, reset, typography, components, layout, landing in order). |
@@ -50,6 +53,8 @@ All CSS custom properties are declared in `tokens.css` and consumed everywhere e
 
 `font-variant-numeric: tabular-nums` is intentionally scoped to a fixed set of places — currently: `.pace-counter__display`, `.stat-item__value`, `.split-adjust__primary` (all in landing.css); `.table`, `.wheel-picker__row` (components.css); and `.export-table__head`, `.export-table__dist-label`, `.export-table__dist-pace`, `.export-table__time` (export.css, keeps digit columns stable in the exported PNG/PDF). Do not add it globally or to other elements.
 
+The `slot-text` npm package drives the animated digit/stat transitions (pace counter, stat values) — wired up in `state.js` and styled via `slot-text/style.css`, imported in `bundle.css`.
+
 ### Fonts
 
 - **Geist Variable** — imported via `@fontsource-variable/geist` npm package; pulled in via `@import` in `src/styles/bundle.css` (for `index.html`) and directly in `src/components-preview.js` (for `components.html`).
@@ -57,4 +62,6 @@ All CSS custom properties are declared in `tokens.css` and consumed everywhere e
 
 ### Responsive strategy
 
-Mobile-first. One breakpoint at `768px` in `components.css` and `landing.css`. Key differences above 768px: horizontal padding increases to `var(--space-96)` (96px), table rows shrink from 64px to 44px, stats row expands from 2-column to 4-column grid.
+Mobile-first. One breakpoint at `768px` in `components.css` and `landing.css`. Key differences above 768px: horizontal padding increases to `var(--space-96)` (96px), stats row expands from 2-column to 4-column grid.
+
+`tokens.css` also scales every `--space-*` token to 80% of its desktop value under `@media (max-width: 767px)`. This means spacing shrinks on mobile automatically wherever a `--space-*` var is used, with no extra media query needed in the consuming file. When adding a new `--space-*` token, add its ×0.8 value to that mobile block too.
