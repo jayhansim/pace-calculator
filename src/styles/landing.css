@@ -1,6 +1,7 @@
 /* ── Hero ───────────────────────────────────────────── */
 .hero {
   height: 160px;
+  padding-top: env(safe-area-inset-top);
   background-image: url('../images/header-bg.jpg');
   background-size: cover;
   background-position: bottom;
@@ -8,6 +9,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-sizing: content-box;
 }
 
 .hero__text {

@@ -1,11 +1,12 @@
 body {
-  background: var(--color-white);
+  background: var(--color-text-primary);
   min-height: 100vh;
   min-width: 320px;
 }
 
 .page {
   margin: 0 auto;
+  background: var(--color-white);
 }
 
 /* Content column — centered, max 680px */
