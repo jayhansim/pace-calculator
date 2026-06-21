@@ -8,6 +8,7 @@ A running pace calculator for 5K, 10K, half marathon, 30K, and full marathon dis
 - **Split table** with even or first/last segment pacing per distance
 - **Shareable links** — distance, pace, and cadence are encoded in the URL query string and restored on load
 - **Export splits** as a PNG (via `html2canvas`) or PDF (via the browser print dialog)
+- **Footer particle effect** — ambient animation via `particles.js`
 - **Design system preview** at `components.html` for the shared UI components
 
 ## Getting started
