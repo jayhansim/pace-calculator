@@ -43,7 +43,7 @@
 
 /* ── Pace display ───────────────────────────────────── */
 .pace-section {
-  padding: var(--space-40) 0;
+  padding: var(--space-64) 0;
 }
 
 .pace-heading {
@@ -51,7 +51,6 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-8);
 }
 
 .pace-heading__label {

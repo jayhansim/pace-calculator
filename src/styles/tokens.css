@@ -30,6 +30,7 @@
   --space-24: 24px;
   --space-32: 32px;
   --space-40: 40px;
+  --space-64: 64px;
   --space-80: 80px;
   --space-96: 96px;
 }
@@ -46,6 +47,7 @@
     --space-24: 19.2px;
     --space-32: 25.6px;
     --space-40:   32px;
+    --space-64: 51.2px;
     --space-80:   64px;
     --space-96: 76.8px;
   }
